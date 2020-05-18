@@ -40,10 +40,6 @@ Cover page -->
 # Project requirements
 
 
-
----
-
-
 The user should be able to select the length of time they would like to fast. For example, if they are doing a 16:8 fast, the fast length they would choose would be 16 hours. This can be of a specific (typical) length, like 16 hours or 18 hours, but may also be customized to any length (specifically to the seconds level). 
 
 The fasting timer will show a clock with the amount of time left in the fast: it will display hours, minutes, and seconds remaining. The user will be able to start the timer manually. 
@@ -62,26 +58,8 @@ In order to pursue these desires further in the future, Coleman is planning to m
 
 **Annie Cao **Annie has been fascinated with human health and biology, particularly in a medical context, since she was a child. When she discovered an equivalent passion for statistical data and computer science in her first year at college, she delved into the intersection between these fields. Annie is majoring in Computer Science and taking courses in statistics and biology as well. Annie also has a knack for managerial and administrative duties. During her internship at the medical technology company ResMed last summer, Annie drafted technical documentation, investigated new software for the department, and co-piloted an early testers program for other project managers. Ultimately, she is looking forward to honing and applying her interdisciplinary skills and knowledge this summer during Launch. Outside of classes, she volunteers at the Emily Couric Clinical Cancer Center and enjoys drawing in her free time.
 
-Table of Contents
-
-
-
----
-
-
-
-[TOC]
-
-
-
-# 
-
 
 # Introduction
-
-
-
----
 
 
 Intermittent fasting is a health technique individuals may use to manage how they’re consuming food, leading to both mental and physical benefits. During intermittent fasting, individuals set aside an amount of time each day where they cannot eat. The purpose of the Intermittent Fasting Timer is to allow individuals to easily keep track of their fasts, both current and in the past. 
@@ -96,9 +74,6 @@ To keep track of past fasts, users may refer to their history, where a list of e
 
 # Key definitions
 
-
-
----
 
 
 
@@ -145,17 +120,8 @@ To keep track of past fasts, users may refer to their history, where a list of e
 
 
 
-
-
-# 
-
-
 # Technologies to be implemented
 
-
-# 
-
----
 
 
 The project will require the use of the following technologies:
@@ -164,8 +130,6 @@ React.js - React is a Javascript library created by Facebook that efficiently bu
 
 Git and Github - Github is a software development platform that allows for source control as developers share and work on code.
 
-
-# 
 
 
 # Project timeline
