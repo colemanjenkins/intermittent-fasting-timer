@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './Timer.css';
 import { Progress } from 'antd';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import "antd/dist/antd.css";
+=======
+>>>>>>> cedef685fc46480270b1677c61e278944a5aa5b2
 =======
 >>>>>>> cedef685fc46480270b1677c61e278944a5aa5b2
 
@@ -13,6 +16,9 @@ class Timer extends Component {
         return (
 =======
         return(
+<<<<<<< HEAD
+>>>>>>> cedef685fc46480270b1677c61e278944a5aa5b2
+=======
 >>>>>>> cedef685fc46480270b1677c61e278944a5aa5b2
             <div className="timer">
                 <Progress type="circle" percent={50} />
