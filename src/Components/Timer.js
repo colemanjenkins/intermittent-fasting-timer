@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './Timer.css';
 
-class Timer extends React.Component {
+class Timer extends Component {
 
     render() {
-        return(
-            <div>
-
+        return (
+            <div className="timer" >
+                Timer
             </div>
         );
     }

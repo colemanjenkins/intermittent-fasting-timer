@@ -9,6 +9,16 @@ function App() {
   return (
     <div className="App">
       <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
+      <div className="grid">
+        <TimerControls />
+        <Timer />
+        <History />
+        <Records />
+        {/* <div className="timerControls">timerControls</div>
+        <div className="timer">timer</div>
+        <div className="history">history</div>
+        <div className="records">records</div> */}
+      </div>
     </div>
   );
 }
