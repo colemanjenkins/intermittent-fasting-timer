@@ -37,6 +37,20 @@ You have 11 H1 headings. You may want to use the "H1 -> H2" option to demote all
 
 Cover page -->
 
+# Project requirements
+
+
+
+---
+
+
+The user should be able to select the length of time they would like to fast. For example, if they are doing a 16:8 fast, the fast length they would choose would be 16 hours. This can be of a specific (typical) length, like 16 hours or 18 hours, but may also be customized to any length (specifically to the seconds level). 
+
+The fasting timer will show a clock with the amount of time left in the fast: it will display hours, minutes, and seconds remaining. The user will be able to start the timer manually. 
+
+Once the timer has been stopped, the user will be able to see past fasts in a “History” section and the timer will be reset and able to be started again. 
+
+
 
 # Team Introduction
 
@@ -131,18 +145,6 @@ To keep track of past fasts, users may refer to their history, where a list of e
 
 
 
-# Project requirements
-
-
-
----
-
-
-The user should be able to select the length of time they would like to fast. For example, if they are doing a 16:8 fast, the fast length they would choose would be 16 hours. This can be of a specific (typical) length, like 16 hours or 18 hours, but may also be customized to any length (specifically to the seconds level). 
-
-The fasting timer will show a clock with the amount of time left in the fast: it will display hours, minutes, and seconds remaining. The user will be able to start the timer manually. 
-
-Once the timer has been stopped, the user will be able to see past fasts in a “History” section and the timer will be reset and able to be started again. 
 
 
 # 
