@@ -1,4 +1,4 @@
-# Intermittant Fasting Timer
+# Intermittent Fasting Timer
 
 <!-----
 NEW: Your output is on the clipboard!
