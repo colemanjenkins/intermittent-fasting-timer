@@ -1,5 +1,9 @@
 import React from 'react';
 import './App.css';
+import Timer from './Components/Timer.js';
+import History from './Components/History.js';
+import Records from './Components/Records.js';
+import TimerControls from './Components/TimerControls.js';
 
 function App() {
   return (
