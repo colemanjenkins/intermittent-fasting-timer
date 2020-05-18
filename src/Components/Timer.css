@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 .timer {
   grid-area: timer;
 }
 
+=======
+>>>>>>> cedef685fc46480270b1677c61e278944a5aa5b2
 @import '/node_modules/antd/dist/antd.css';
 
 .ant-progress-circle-wrap,

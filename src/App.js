@@ -33,7 +33,7 @@ class App extends Component {
         <div className="grid">
           <TimerControls />
           <Timer />
-          <History />
+          <History fasts={this.state.fasts} />
           <Records />
         </div>
 
