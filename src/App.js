@@ -37,8 +37,6 @@ class App extends Component {
 
   newSuccess() {
     const successFast = {
-      //where do i get the info for the new successful fast, will this be stored in the state already
-      //as timerStart?
       startDate: (Date.now() - this.state.timerTimer),
       endDate: Date.now(),
       actualTime: this.state.timerTime,
@@ -54,7 +52,6 @@ class App extends Component {
   }
   newFailed() {
     const failedFast = {
-      //where do i get the info for the new failed fast
       startDate: (Date.now() - this.state.timerTimer),
       endDate: Date.now(),
       actualTime: 0,
