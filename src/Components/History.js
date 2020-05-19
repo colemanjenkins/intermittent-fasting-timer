@@ -85,12 +85,14 @@ class History extends Component {
 
                 <div className="topLevel">
                     {/* If fasts is not empty */}
-                    {!isEmpty(this.props.fasts) &&
+                    {!isEmpty(this.props.fasts) && !this.state.showExpand &&
                         <div className="historyBody">
                             {this.props.fasts.map(fast => {
                                 let start = this.timeStamp(fast.startDate, false)
                                 return (
                                     <div>
+                                        <button type="button" onClick={() => this.setState({ showExpand: true })}>></button>
+
                                         {start}{" => "}{" "}
                                         {fast.passed &&
                                             <p style={{ color: 'green', display: "inline" }}>PASS</p>
@@ -106,9 +108,9 @@ class History extends Component {
                 </div>
 
                 <div className="expandedView">
-                    {!isEmpty(this.props.fasts) &&
+                    {!isEmpty(this.props.fasts) && this.state.showExpand &&
                         <div className="historyBody">
-
+                            Expanded
                         </div>
                     }
                 </div>
