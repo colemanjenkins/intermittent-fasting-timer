@@ -16,9 +16,18 @@ class App extends Component {
         {
           startDate: 1589836641396,
           endDate: 1589836650000,
-          actualTime: 0,
-          plannedTime: 0,
-          passed: true
+          actualTime: 9000,
+          plannedTime: 9000,
+          passed: true,
+          id: 0,
+        },
+        {
+          startDate: 1289836641396,
+          endDate: 1289836680000,
+          actualTime: 20000,
+          plannedTime: 39000,
+          passed: false,
+          id: 1,
         }
       ],
       timerTime: 18 * 60 * 60 * 1000,
@@ -89,7 +98,7 @@ class App extends Component {
           <TimerControls updatePlannedTime={this.updatePlannedTime} />
           <Timer stop={this.state.stop} timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
           <History fasts={this.state.fasts} />
-          <Records />
+          <Records fasts={this.state.fasts} />
         </div>
 
       </div>
