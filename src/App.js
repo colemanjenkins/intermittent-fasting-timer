@@ -19,9 +19,9 @@ class App extends Component {
       ],
 
       successFastsMessages: [
-          'Good job!',
-          'Health guru!',
-          'Nice!'
+        'Good job!',
+        'Health guru!',
+        'Nice!'
       ],
 
       fasts: [
@@ -84,7 +84,7 @@ class App extends Component {
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
       passed: true,
-      id: this.state.fasts[this.state.fasts.length-1].id + 1,
+      id: this.state.fasts[this.state.fasts.length - 1].id + 1,
       status: this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, successFast]
@@ -103,7 +103,7 @@ class App extends Component {
       actualTime: 0,
       plannedTime: this.state.timerTime,
       passed: false,
-      id: this.state.fasts[this.state.fasts.length-1].id + 1,
+      id: this.state.fasts[this.state.fasts.length - 1].id + 1,
       status: this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, failedFast]
