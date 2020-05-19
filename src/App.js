@@ -22,8 +22,9 @@ class App extends Component {
         }
       ],
       timerTime: 18 * 60 * 60 * 1000,
-      timerStart: 1589900551026,
-      currentTime: Date.now()
+      timerStart: 0,
+      currentTime: Date.now(),
+      stop: true
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
     this.newSuccess = this.newSuccess.bind(this);
@@ -40,9 +41,11 @@ class App extends Component {
   updatePlannedTime(msTime) {
     this.setState({
       timerTime: msTime,
-      timerStart: Date.now()
-    })
-    console.log("timerTime: " + this.state.timerTime)
+      timerStart: Date.now(),
+      stop: false
+    });
+    console.log("timerTime: " + this.state.timerTime);
+
   }
   //this should be called when the timer gets to zero
   newSuccess() {
@@ -84,7 +87,7 @@ class App extends Component {
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
           <TimerControls updatePlannedTime={this.updatePlannedTime} />
-          <Timer timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
+          <Timer stop={this.state.stop} timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
           <History fasts={this.state.fasts} />
           <Records />
         </div>
