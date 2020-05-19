@@ -44,7 +44,7 @@ class App extends Component {
           id: 1,
         }
       ],
-      timerTime: 18 * 60 * 60 * 1000,
+      timerTime: 17 * 60 * 60 * 1000,
       timerStart: 0,
       currentTime: Date.now(),
       stop: true

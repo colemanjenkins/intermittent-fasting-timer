@@ -7,20 +7,7 @@ class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showExpand: false,
-            failedFastsMessages: [
-                'Some room for improvement!',
-                'You got this next time!',
-                'Failure is an inevitable part of success!'
-            ],
-            successFastsMessages: [
-                'Good job!',
-                'Health guru!',
-                'Nice!'
-            ],
             showFastID: [],
-            successID: 0,
-            failID: 0,
         }
 
         this.timeStamp = this.timeStamp.bind(this);
@@ -88,10 +75,8 @@ class History extends Component {
 
     parseTime = (time) => {
         let totalInSeconds = time / 1000;
-        console.log("totalInSeconds: " + totalInSeconds)
 
         let hours = Math.floor(totalInSeconds / 3600);
-        console.log("hours: " + hours)
         let remaining = totalInSeconds % 3600;
 
         let minutes = Math.floor(remaining / 60);
@@ -102,28 +87,21 @@ class History extends Component {
 
     handleExpand = (id) => {
         if (isEmpty(this.state.showFastID)) {
-            this.setState({ 
+            this.setState({
                 showFastID: [id],
-                successID: Math.floor(Math.random() * this.state.successFastsMessages.length),
-                failID: Math.floor(Math.random() * this.state.failedFastsMessages.length),
-                showExpand: true,
             })
         } else {
-            this.setState({ 
+            this.setState({
                 showFastID: [...this.state.showFastID, id],
-                successID: Math.floor(Math.random() * this.state.successFastsMessages.length),
-                failID: Math.floor(Math.random() * this.state.failedFastsMessages.length),
-                showExpand: true,
             })
         }
-        
+
     }
 
     handleUnexpand = (id) => {
         let newShowFastID = this.state.showFastID.filter(fast => fast !== id);
-        this.setState({ 
+        this.setState({
             showFastID: newShowFastID,
-            showExpand: false,
         })
     }
 
@@ -160,24 +138,9 @@ class History extends Component {
                                 let actualMinutes = actualTimes[1];
                                 let actualSeconds = actualTimes[2];
 
-                                // let successMessage = '';
-                                // let failMessage = '';
-
-                                // if (this.state.showExpand) {
-                                //     successMessage = this.state.successFastsMessages[this.state.successID];
-                                //     failMessage = this.state.failedFastsMessages[this.state.failID];
-                                // }
-
-                                // if (!this.state.showExpand) {
-                                //     successMessage = this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)];
-                                //     failMessage = this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)];
-                                // }
-
-                                
-
                                 return (
                                     <div>
-                                        {!this.state.showFastID.includes(fast.id) && 
+                                        {!this.state.showFastID.includes(fast.id) &&
                                             <button type="button" className="button" onClick={() => this.handleExpand(fast.id)}>></button>
                                         }
                                         {this.state.showFastID.includes(fast.id) &&
@@ -200,20 +163,8 @@ class History extends Component {
                                                 Planned Time: {plannedHours} h, {plannedMinutes} m, {plannedSeconds} s <br/>
                                                 Actual Time: {actualHours} h, {actualMinutes} m, {actualSeconds} s <br/>
                                                 Status: {fast.status}
-                                                {/* Status:{" "}
-                                                {fast.passed &&
-                                                    <p
-                                                        style={{ display: "inline" }}
-                                                    >{successMessage}</p>
-                                                }
-                                                {!fast.passed &&
-                                                    <p
-                                                        style={{ display: "inline" }}
-                                                    >{failMessage}</p>
-                                                } */}
                                             </div>
                                         }
-                                    {/* <br/> */}
                                     </div>
                                 );
                             })}
