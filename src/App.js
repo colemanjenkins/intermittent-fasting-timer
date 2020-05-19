@@ -39,7 +39,7 @@ class App extends Component {
       endDate: 0,
       actualTime: 0,
       plannedTime: 0,
-      passed: 0
+      passed: false
     }
   }
 
