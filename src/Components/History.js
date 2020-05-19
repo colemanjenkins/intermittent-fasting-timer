@@ -7,6 +7,7 @@ class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showExpand: false,
             failedFastsMessages: [
                 'Some room for improvement!',
                 'You got this next time!',
@@ -18,6 +19,8 @@ class History extends Component {
                 'Nice!'
             ],
             showFastID: [],
+            successID: 0,
+            failID: 0,
         }
 
         this.timeStamp = this.timeStamp.bind(this);
@@ -101,10 +104,16 @@ class History extends Component {
         if (isEmpty(this.state.showFastID)) {
             this.setState({ 
                 showFastID: [id],
+                successID: Math.floor(Math.random() * this.state.successFastsMessages.length),
+                failID: Math.floor(Math.random() * this.state.failedFastsMessages.length),
+                showExpand: true,
             })
         } else {
             this.setState({ 
                 showFastID: [...this.state.showFastID, id],
+                successID: Math.floor(Math.random() * this.state.successFastsMessages.length),
+                failID: Math.floor(Math.random() * this.state.failedFastsMessages.length),
+                showExpand: true,
             })
         }
         
@@ -114,6 +123,7 @@ class History extends Component {
         let newShowFastID = this.state.showFastID.filter(fast => fast !== id);
         this.setState({ 
             showFastID: newShowFastID,
+            showExpand: false,
         })
     }
 
@@ -150,6 +160,21 @@ class History extends Component {
                                 let actualMinutes = actualTimes[1];
                                 let actualSeconds = actualTimes[2];
 
+                                // let successMessage = '';
+                                // let failMessage = '';
+
+                                // if (this.state.showExpand) {
+                                //     successMessage = this.state.successFastsMessages[this.state.successID];
+                                //     failMessage = this.state.failedFastsMessages[this.state.failID];
+                                // }
+
+                                // if (!this.state.showExpand) {
+                                //     successMessage = this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)];
+                                //     failMessage = this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)];
+                                // }
+
+                                
+
                                 return (
                                     <div>
                                         {!this.state.showFastID.includes(fast.id) && 
@@ -174,17 +199,18 @@ class History extends Component {
                                                 End: {endLong} <br/>
                                                 Planned Time: {plannedHours} h, {plannedMinutes} m, {plannedSeconds} s <br/>
                                                 Actual Time: {actualHours} h, {actualMinutes} m, {actualSeconds} s <br/>
-                                                Status:{" "}
+                                                Status: {fast.status}
+                                                {/* Status:{" "}
                                                 {fast.passed &&
                                                     <p
                                                         style={{ display: "inline" }}
-                                                    >{this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)]}</p>
+                                                    >{successMessage}</p>
                                                 }
                                                 {!fast.passed &&
                                                     <p
                                                         style={{ display: "inline" }}
-                                                    >{this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)]}</p>
-                                                }
+                                                    >{failMessage}</p>
+                                                } */}
                                             </div>
                                         }
                                     {/* <br/> */}
