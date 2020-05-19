@@ -58,6 +58,8 @@ class App extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 1000);
+    if (this.state.timerTime + this.state.timerStart <= this.state.currentTime)
+      this.newSuccess();
   }
   componentWillUnmount() {
     clearInterval(this.interval);
@@ -81,7 +83,7 @@ class App extends Component {
   //this should be called when the timer gets to zero
   newSuccess() {
     const successFast = {
-      startDate: (Date.now() - this.state.timerTimer),
+      startDate: (Date.now() - this.state.timerTime),
       endDate: Date.now(),
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
@@ -100,7 +102,7 @@ class App extends Component {
 
   newFailed() {
     const failedFast = {
-      startDate: (Date.now() - this.state.timerTimer),
+      startDate: (Date.now() - this.state.timerTime),
       endDate: Date.now(),
       actualTime: 0,
       plannedTime: this.state.timerTime,
