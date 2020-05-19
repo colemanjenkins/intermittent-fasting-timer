@@ -1,6 +1,6 @@
 import React from 'react';
 import './TimerControls.css';
-import { InputNumber, Button, Input } from 'antd';
+import { InputNumber, Button } from 'antd';
 
 
 class TimerControls extends React.Component {
@@ -18,6 +18,7 @@ class TimerControls extends React.Component {
     }
 
     handleHourInput(e) {
+        console.log("e.target.value: " + e)
         this.setState(prevState => ({
             hours: e,
             ms: (prevState.ms + e * 3600000)
@@ -35,10 +36,23 @@ class TimerControls extends React.Component {
             ms: (prevState.ms + e * 1000)
         }));
     }
+    clearTime() {
+        this.setState({
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            ms: 0
+        })
+    }
 
     render() {
         return (
             <div className="Controls">
+                <div className="InputLabels">
+                    <p>Hours</p>
+                    <p>Mins</p>
+                    <p>Secs</p>
+                </div>
                 <div className="Table">
                     <ul id="horizontal-list">
                         <li>
@@ -68,10 +82,12 @@ class TimerControls extends React.Component {
                     </ul>
                 </div>
                 <div className="StartButton">
-                    <Button type="submit" onClick={() => this.props.updatePlannedTime(this.state.ms)}>Start Timer</Button>
+                    <Button type="submit"
+                        onClick={() => { this.props.updatePlannedTime(this.state.ms); this.clearTime() }}
+                    >Start Timer</Button>
                 </div>
-                <div>
-                    <Button className="FailButton">I failed :(</Button>
+                <div className="GiveUp">
+                    <Button type="submit" onClick={() => this.props.newFailed}>I failed :(</Button>
                 </div>
 
             </div>

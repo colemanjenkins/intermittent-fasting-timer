@@ -5,7 +5,12 @@
     grid-area: controls;
 }
 
-.Table {
+.InputLabels {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.table {
     display: table;
     margin: 0 auto;
 }

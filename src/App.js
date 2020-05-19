@@ -21,15 +21,52 @@ class App extends Component {
           passed: true
         }
       ],
-      timerTime: 0,
-      timerStart: 0,
+      timerTime: 18 * 60 * 60 * 1000,
+      timerStart: 1589900551026 + 20 * 60 * 60 * 1000,
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
+    this.newSuccess = this.newSuccess.bind(this);
+    this.newFailed = this.newFailed.bind(this);
   }
 
   updatePlannedTime(msTime) {
     this.setState({
-      timerTime: msTime
+      timerTime: msTime,
+      timerStart: Date.now()
+    })
+    console.log("timerTime: " + this.state.timerTime)
+  }
+  //this should be called when the timer gets to zero
+  newSuccess() {
+    const successFast = {
+      startDate: (Date.now() - this.state.timerTimer),
+      endDate: Date.now(),
+      actualTime: this.state.timerTime,
+      plannedTime: this.state.timerTime,
+      passed: false
+    }
+    const newFastList = [...this.state.fasts, successFast]
+    console.log(this.state.timerTime)
+    this.setState({
+      fasts: newFastList,
+      timerTime: 0,
+      timerStart: 0
+    })
+  }
+  newFailed() {
+    const failedFast = {
+      startDate: (Date.now() - this.state.timerTimer),
+      endDate: Date.now(),
+      actualTime: 0,
+      plannedTime: this.state.timerTime,
+      passed: false
+    }
+    const newFastList = [...this.state.fasts, failedFast]
+    console.log(this.state.timerTime)
+    this.setState({
+      fasts: newFastList,
+      timerTime: 0,
+      timerStart: 0
     })
   }
 
@@ -39,7 +76,7 @@ class App extends Component {
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
           <TimerControls updatePlannedTime={this.updatePlannedTime} />
-          <Timer />
+          <Timer timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
           <History fasts={this.state.fasts} />
           <Records />
         </div>
