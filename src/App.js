@@ -13,8 +13,8 @@ class App extends Component {
 
       fasts: [
         {
-          startDate: 10000,
-          endDate: 10001,
+          startDate: 1589836641396,
+          endDate: 1589836650000,
           actualTime: 0,
           plannedTime: 0,
           passed: true
