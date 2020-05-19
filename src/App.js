@@ -22,11 +22,19 @@ class App extends Component {
         }
       ],
       timerTime: 18 * 60 * 60 * 1000,
-      timerStart: 1589900551026 + 20 * 60 * 60 * 1000,
+      timerStart: 1589900551026,
+      currentTime: Date.now()
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
     this.newSuccess = this.newSuccess.bind(this);
     this.newFailed = this.newFailed.bind(this);
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   updatePlannedTime(msTime) {
