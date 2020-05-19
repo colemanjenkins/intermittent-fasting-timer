@@ -29,6 +29,12 @@ class Timer extends Component {
         return sec + "";
     }
 
+    timeDisplay = (timerStart, timerLength) => {
+        return this.getHoursAndMinutes(timerStart, timerLength) +
+            ":" + this.getSeconds(timerStart, timerLength);
+    }
+
+    //todo after lunch: make percent displayed accurate. 
     render() {
         const {
             timerLength,
@@ -40,7 +46,8 @@ class Timer extends Component {
                 <Progress type="circle" percent={50} />
                 <div>
 
-                    <Progress type="circle" percent={75} />
+                    <Progress type="circle" percent={75}
+                        format={() => this.timeDisplay(timerStart, timerLength)} />
                     <Progress type="circle" percent={70} status="exception" />
                     <Progress type="circle" percent={100} />
                     {this.getHoursAndMinutes(timerStart, timerLength) /*this is "17:55" part of the display*/}

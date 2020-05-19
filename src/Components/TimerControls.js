@@ -20,21 +20,30 @@ class TimerControls extends React.Component {
     handleHourInput(e) {
         console.log("e.target.value: " + e)
         this.setState(prevState => ({
-            hours: Number(e),
-            ms: (prevState.ms + Number(e) * 3600000)
+            hours: e,
+            ms: (prevState.ms + e * 3600000)
         }));
     }
     handleMinuteInput(e) {
         this.setState(prevState => ({
-            minutes: Number(e),
-            ms: (prevState.ms + Number(e) * 60000)
+            minutes: e,
+            ms: (prevState.ms + e * 60000)
         }));
     }
     handleSecondInput(e) {
         this.setState(prevState => ({
-            seconds: Number(e),
-            ms: (prevState.ms + Number(e) * 1000)
+            seconds: e,
+            ms: (prevState.ms + e * 1000)
         }));
+    }
+
+    clearTime() {
+        this.setState({
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            ms: 0
+        })
     }
 
     render() {
@@ -74,7 +83,9 @@ class TimerControls extends React.Component {
                     </div>
                 </form>
                 <div className="StartButton">
-                    <Button type="submit" onClick={() => this.props.updatePlannedTime(this.state.ms)}>Start Timer</Button>
+                    <Button type="submit"
+                        onClick={() => this.props.updatePlannedTime(this.state.ms)}
+                    >Start Timer</Button>
                 </div>
                 <div className="GiveUp">
                     <Button type="submit" onClick={() => this.props.newFailed}>I failed :(</Button>
