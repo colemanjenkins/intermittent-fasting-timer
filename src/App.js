@@ -25,19 +25,25 @@ class App extends Component {
 
     }
   }
-  
+
+
   render() {
     return (
       <div className="App">
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
-        <Timer/><br/><br/>
-        <History
-          fasts = {this.state.fasts}
-        />
+        <div className="grid">
+          <TimerControls />
+          <Timer />
+          <History fasts={this.state.fasts} />
+          <Records />
+        </div>
+
       </div>
     );
   }
-  
+
+
+
 }
 
 export default App;
