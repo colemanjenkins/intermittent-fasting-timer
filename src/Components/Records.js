@@ -60,7 +60,7 @@ class Records extends Component {
                 <p>Longest Fast: {this.findLongestFast(list)}</p>
                 <p>Shortest Fast: {this.findShortestFast(list)}</p>
                 <b>Pass Rate: {passRate}%</b>
-                <Progress percent={passRate} />
+                <Progress percent={passRate} trailColor="red" />
                 <p>{message}</p>
             </div>
         );

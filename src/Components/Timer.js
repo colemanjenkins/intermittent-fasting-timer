@@ -47,11 +47,16 @@ class Timer extends Component {
         clearInterval(this.interval);
     }
 
+    calculateMessage(percentDone) {
+
+    }
+
     render() {
         const {
             timerLength,
             timerStart
         } = this.props;
+        var message = this.calculateMessage(this.calculatePercent(timerLength, timerStart));
         return (
 
             <div className="timer" style={{ verticalAlign: "center" }}>
@@ -61,6 +66,8 @@ class Timer extends Component {
                     format={() => this.timeDisplay(timerStart, timerLength)}
                     width={200}
                 />
+
+
             </div>
         );
     }
