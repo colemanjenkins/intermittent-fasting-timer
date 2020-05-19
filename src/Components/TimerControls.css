@@ -2,6 +2,7 @@
 .Controls {
     display: inline;
     margin: 0 auto;
+    grid-area: controls;
 }
 
 .Table {

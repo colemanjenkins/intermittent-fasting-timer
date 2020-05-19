@@ -27,6 +27,7 @@ You have 13 H1 headings. You may want to use the "H1 -> H2" option to demote all
 ----->
 
 ![alt_text](images/Intermittent-Fasting0.png "image_tooltip")
+![alt_text](images/Intermittent-Fasting1.png "image_tooltip")
 
 
 

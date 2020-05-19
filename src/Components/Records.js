@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './Records.css';
 
-class Records extends React.Component {
+class Records extends Component {
 
     render() {
-        return(
-            <div>
-
+        return (
+            <div className="records">
+                Records
             </div>
         );
     }
