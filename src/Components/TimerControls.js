@@ -19,20 +19,20 @@ class TimerControls extends React.Component {
 
     handleHourInput(e) {
         this.setState(prevState => ({
-            hours: e.target.value,
-            ms: (prevState.ms + e.target.value * 3600000)
+            hours: e,
+            ms: (prevState.ms + e * 3600000)
         }));
     }
     handleMinuteInput(e) {
         this.setState(prevState => ({
-            minutes: e.target.value,
-            ms: (prevState.ms + e.target.value * 60000)
+            minutes: e,
+            ms: (prevState.ms + e * 60000)
         }));
     }
     handleSecondInput(e) {
         this.setState(prevState => ({
-            seconds: e.target.value,
-            ms: (prevState.ms + e.target.value * 1000)
+            seconds: e,
+            ms: (prevState.ms + e * 1000)
         }));
     }
 
