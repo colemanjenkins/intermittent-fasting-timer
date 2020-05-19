@@ -4,6 +4,12 @@ import { Progress } from 'antd';
 import "antd/dist/antd.css";
 
 class Timer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: 'You got this!'
+        }
+    }
 
     //gives the difference between timer in the format: "(Hours):(Minutes)"
     getHoursAndMinutes = (timerStart, timerLength, stop) => {
@@ -50,15 +56,19 @@ class Timer extends Component {
         if (stop)
             return 100;
         let diff = Date.now() - timerStart;
-        let timeFull = timerLength - diff;
-        let pct = 100 - 100 * (diff / timeFull);
+        let pct = 100 - 100 * (diff / timerLength);
         if (pct < 0)
             return 0;
         return pct;
     }
 
-    calculateMessage(percentDone) {
-
+    calculateMsg(pct) {
+        const msgs = ['apple', 'banana', 'coconut'];
+        if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
+            this.setState({
+                message: Math.floor(Math.random() * Math.floor(msgs.length))
+            })
+        }
     }
 
     render() {
@@ -67,7 +77,14 @@ class Timer extends Component {
             timerLength,
             timerStart,
         } = this.props;
-        var message = this.calculateMessage(this.calculatePercent(timerLength, timerStart));
+        // const pct = this.calculatePercent(timerStart, timerLength, stop)
+        this.calculateMsg(this.calculatePercent(timerStart, timerLength, stop));
+        // const msgs = ['apple', 'banana', 'coconut'];
+        // if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
+        //     this.setState({
+        //         message: Math.floor(Math.random() * Math.floor(msgs.length))
+        //     })
+        // }
         return (
 
             <div className="timer" style={{ verticalAlign: "center" }}>
@@ -78,7 +95,7 @@ class Timer extends Component {
                     width={200}
                 />
 
-
+                <div>{this.state.message}</div>
             </div>
         );
     }
