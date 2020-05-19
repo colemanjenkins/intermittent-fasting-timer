@@ -11,6 +11,7 @@ class Timer extends Component {
         }
     }
 
+
     //gives the difference between timer in the format: "(Hours):(Minutes)"
     getHoursAndMinutes = (timerStart, timerLength, stop) => {
         let diff = Date.now() - timerStart;
