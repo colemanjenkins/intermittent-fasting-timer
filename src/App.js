@@ -32,6 +32,7 @@ class App extends Component {
     this.setState({
       timerTime: msTime
     })
+    console.log("timerTime: " + this.state.timerTime)
   }
   newFailed() {
     const failedFast = {
