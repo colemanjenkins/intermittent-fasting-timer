@@ -48,12 +48,18 @@ class App extends Component {
   }
 
   updatePlannedTime(msTime) {
-    this.setState({
-      timerTime: msTime,
-      timerStart: Date.now(),
-      stop: false
-    });
-    console.log("timerTime: " + this.state.timerTime);
+    if (msTime === 0) {
+      this.setState({
+        stop: true,
+      })
+    } else {
+      this.setState({
+        timerTime: msTime,
+        timerStart: Date.now(),
+        stop: false
+      });
+      console.log("timerTime: " + this.state.timerTime);
+    }
   }
   //this should be called when the timer gets to zero
   newSuccess() {

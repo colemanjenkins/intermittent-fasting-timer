@@ -13,8 +13,7 @@ class Timer extends Component {
 
     //gives the difference between timer in the format: "(Hours):(Minutes)"
     getHoursAndMinutes = (timerStart, timerLength, stop) => {
-        let now = Date.now();
-        let diff = now - timerStart;
+        let diff = Date.now() - timerStart;
         let timeFull = timerLength - diff;
         let msInHour = 3600000;
         let msInMinute = 60000;
@@ -31,17 +30,11 @@ class Timer extends Component {
         let retString = hours + ":" + min;
         if (min < 10)
             retString = hours + ":0" + min;
-        // console.log("timer start: " + timerStart
-        //     + "\ntimer length: " + timerLength
-        //     + "\nnow: " + now
-        //     + "\nstop: " + stop
-        //     + "\nretString: " + retString);
         return retString;
     };
 
     getSeconds = (timerStart, timerLength, stop) => {
-        let now = Date.now();
-        let diff = now - timerStart;
+        let diff = Date.now() - timerStart;
         let timeFull = timerLength - diff;
         let msInSecond = 1000;
         let sec = (Math.floor(timeFull / msInSecond)) % 60;
@@ -51,11 +44,6 @@ class Timer extends Component {
             sec = 0;
         if (sec < 10)
             return "0" + sec;
-        // console.log("timer start: " + timerStart
-        //     + "\ntimer length: " + timerLength
-        //     + "\nnow: " + now
-        //     + "\nstop: " + stop
-        //     + "\nsec: " + sec);
         return sec + "";
     }
 
@@ -89,14 +77,8 @@ class Timer extends Component {
             timerLength,
             timerStart,
         } = this.props;
-        // const pct = this.calculatePercent(timerStart, timerLength, stop)
         this.calculateMsg(this.calculatePercent(timerStart, timerLength, stop));
-        // const msgs = ['apple', 'banana', 'coconut'];
-        // if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
-        //     this.setState({
-        //         message: Math.floor(Math.random() * Math.floor(msgs.length))
-        //     })
-        // }
+
         return (
 
             <div className="timer" style={{ verticalAlign: "center" }}>
