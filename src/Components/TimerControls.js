@@ -18,21 +18,22 @@ class TimerControls extends React.Component {
     }
 
     handleHourInput(e) {
+        console.log("e.target.value: " + e)
         this.setState(prevState => ({
-            hours: Number(e.target.value),
-            ms: (prevState.ms + Number(e.target.value) * 3600000)
+            hours: Number(e),
+            ms: (prevState.ms + Number(e) * 3600000)
         }));
     }
     handleMinuteInput(e) {
         this.setState(prevState => ({
-            minutes: Number(e.target.value),
-            ms: (prevState.ms + Number(e.target.value) * 60000)
+            minutes: Number(e),
+            ms: (prevState.ms + Number(e) * 60000)
         }));
     }
     handleSecondInput(e) {
         this.setState(prevState => ({
-            seconds: e.target.value,
-            ms: (prevState.ms + Number(e.target.value) * 1000)
+            seconds: Number(e),
+            ms: (prevState.ms + Number(e) * 1000)
         }));
     }
 
@@ -42,34 +43,36 @@ class TimerControls extends React.Component {
                 <div className="input ">
                     <p>Hours</p>
                 </div>
-                <div className="Table">
-                    <ul id="horizontal-list">
-                        <li>
-                            <InputNumber
-                                min={0}
-                                max={99}
-                                value={this.state.hours}
-                                onChange={this.handleHourInput}
-                            />
-                        </li>
-                        <li>
-                            <InputNumber
-                                min={0}
-                                max={59}
-                                value={this.state.minutes}
-                                onChange={this.handleMinuteInput}
-                            />
-                        </li>
-                        <li>
-                            <InputNumber
-                                min={0}
-                                max={59}
-                                value={this.state.seconds}
-                                onChange={this.handleSecondInput}
-                            />
-                        </li>
-                    </ul>
-                </div>
+                <form>
+                    <div className="Table">
+                        <ul id="horizontal-list">
+                            <li>
+                                <InputNumber
+                                    min={0}
+                                    max={99}
+                                    value={this.state.hours}
+                                    onChange={this.handleHourInput}
+                                />
+                            </li>
+                            <li>
+                                <InputNumber
+                                    min={0}
+                                    max={59}
+                                    value={this.state.minutes}
+                                    onChange={this.handleMinuteInput}
+                                />
+                            </li>
+                            <li>
+                                <InputNumber
+                                    min={0}
+                                    max={59}
+                                    value={this.state.seconds}
+                                    onChange={this.handleSecondInput}
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                </form>
                 <div className="StartButton">
                     <Button type="submit" onClick={() => this.props.updatePlannedTime(this.state.ms)}>Start Timer</Button>
                 </div>
