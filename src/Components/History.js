@@ -7,10 +7,24 @@ class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showExpand: false
+            failedFastsMessages: [
+                'Some room for improvement!',
+                'You got this next time!',
+                'Failure is an inevitable part of success!'
+            ],
+            successFastsMessages: [
+                'Good job!',
+                'Health guru!',
+                'Nice!'
+            ],
+            showFastID: [],
         }
 
         this.timeStamp = this.timeStamp.bind(this);
+        this.parseTime = this.parseTime.bind(this);
+
+        this.handleExpand = this.handleExpand.bind(this);
+        this.handleUnexpand = this.handleUnexpand.bind(this);
     }
 
     /** timeStamp
@@ -69,6 +83,40 @@ class History extends Component {
 
     }
 
+    parseTime = (time) => {
+        let totalInSeconds = time / 1000;
+        console.log("totalInSeconds: " + totalInSeconds)
+
+        let hours = Math.floor(totalInSeconds / 3600);
+        console.log("hours: " + hours)
+        let remaining = totalInSeconds % 3600;
+
+        let minutes = Math.floor(remaining / 60);
+        let seconds = remaining % 60;
+
+        return [hours, minutes, seconds];
+    }
+
+    handleExpand = (id) => {
+        if (isEmpty(this.state.showFastID)) {
+            this.setState({ 
+                showFastID: [id],
+            })
+        } else {
+            this.setState({ 
+                showFastID: [...this.state.showFastID, id],
+            })
+        }
+        
+    }
+
+    handleUnexpand = (id) => {
+        let newShowFastID = this.state.showFastID.filter(fast => fast !== id);
+        this.setState({ 
+            showFastID: newShowFastID,
+        })
+    }
+
     render() {
         return (
             <div className="history">
@@ -85,32 +133,64 @@ class History extends Component {
 
                 <div className="topLevel">
                     {/* If fasts is not empty */}
-                    {!isEmpty(this.props.fasts) && !this.state.showExpand &&
+                    {!isEmpty(this.props.fasts) &&
                         <div className="historyBody">
                             {this.props.fasts.map(fast => {
-                                let start = this.timeStamp(fast.startDate, false)
+                                let startShort = this.timeStamp(fast.startDate, false)
+                                let startLong = this.timeStamp(fast.startDate, true)
+                                let endLong = this.timeStamp(fast.endDate, true)
+
+                                let plannedTimes = this.parseTime(fast.plannedTime);
+                                let plannedHours = plannedTimes[0];
+                                let plannedMinutes = plannedTimes[1];
+                                let plannedSeconds = plannedTimes[2];
+
+                                let actualTimes = this.parseTime(fast.actualTime);
+                                let actualHours = actualTimes[0];
+                                let actualMinutes = actualTimes[1];
+                                let actualSeconds = actualTimes[2];
+
                                 return (
                                     <div>
-                                        <button type="button" onClick={() => this.setState({ showExpand: true })}>></button>
+                                        {!this.state.showFastID.includes(fast.id) && 
+                                            <button type="button" className="button" onClick={() => this.handleExpand(fast.id)}>></button>
+                                        }
+                                        {this.state.showFastID.includes(fast.id) &&
+                                            <button type="button" className="button" onClick={() => this.handleUnexpand(fast.id)}>v</button>
+                                        }
+                                        {" "}
 
-                                        {start}{" => "}{" "}
+                                        {startShort}{" => "}{" "}
                                         {fast.passed &&
                                             <p style={{ color: 'green', display: "inline" }}>PASS</p>
                                         }
                                         {!fast.passed &&
                                             <p style={{ color: 'red', display: "inline" }}>FAIL</p>
                                         }
+
+                                        {this.state.showFastID.includes(fast.id) &&
+                                            <div className="expandedView">
+                                                Start: {startLong}<br/>
+                                                End: {endLong} <br/>
+                                                Planned Time: {plannedHours} h, {plannedMinutes} m, {plannedSeconds} s <br/>
+                                                Actual Time: {actualHours} h, {actualMinutes} m, {actualSeconds} s <br/>
+                                                Status:{" "}
+                                                {fast.passed &&
+                                                    <p
+                                                        style={{ display: "inline" }}
+                                                    >{this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)]}</p>
+                                                }
+                                                {!fast.passed &&
+                                                    <p
+                                                        style={{ display: "inline" }}
+                                                    >{this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)]}</p>
+                                                }
+                                            </div>
+                                        }
+                                    {/* <br/> */}
                                     </div>
                                 );
                             })}
-                        </div>
-                    }
-                </div>
-
-                <div className="expandedView">
-                    {!isEmpty(this.props.fasts) && this.state.showExpand &&
-                        <div className="historyBody">
-                            Expanded
                         </div>
                     }
                 </div>
