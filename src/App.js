@@ -78,7 +78,7 @@ class App extends Component {
           <TimerControls updatePlannedTime={this.updatePlannedTime} />
           <Timer timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
           <History fasts={this.state.fasts} />
-          <Records />
+          <Records fasts={this.state.fasts} />
         </div>
 
       </div>
