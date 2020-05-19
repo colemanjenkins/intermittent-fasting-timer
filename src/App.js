@@ -36,11 +36,7 @@ class App extends Component {
     })
     console.log("timerTime: " + this.state.timerTime)
   }
-<<<<<<< HEAD
   //this should be called when the timer gets to zero
-=======
-
->>>>>>> d696b6472925bc4d7cd5bb88d4e8cbda67d52227
   newSuccess() {
     const successFast = {
       startDate: (Date.now() - this.state.timerTimer),
@@ -50,10 +46,7 @@ class App extends Component {
       passed: false
     }
     const newFastList = [...this.state.fasts, successFast]
-<<<<<<< HEAD
     console.log(this.state.timerTime)
-=======
->>>>>>> d696b6472925bc4d7cd5bb88d4e8cbda67d52227
     this.setState({
       fasts: newFastList,
       timerTime: 0,
@@ -69,10 +62,7 @@ class App extends Component {
       passed: false
     }
     const newFastList = [...this.state.fasts, failedFast]
-<<<<<<< HEAD
     console.log(this.state.timerTime)
-=======
->>>>>>> d696b6472925bc4d7cd5bb88d4e8cbda67d52227
     this.setState({
       fasts: newFastList,
       timerTime: 0,

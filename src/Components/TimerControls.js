@@ -45,15 +45,6 @@ class TimerControls extends React.Component {
         })
     }
 
-    clearTime() {
-        this.setState({
-            hours: 0,
-            minutes: 0,
-            seconds: 0,
-            ms: 0
-        })
-    }
-
     render() {
         return (
             <div className="Controls">
@@ -92,11 +83,7 @@ class TimerControls extends React.Component {
                 </div>
                 <div className="StartButton">
                     <Button type="submit"
-<<<<<<< HEAD
                         onClick={() => { this.props.updatePlannedTime(this.state.ms); this.clearTime() }}
-=======
-                        onClick={() => this.props.updatePlannedTime(this.state.ms)}
->>>>>>> d696b6472925bc4d7cd5bb88d4e8cbda67d52227
                     >Start Timer</Button>
                 </div>
                 <div className="GiveUp">
