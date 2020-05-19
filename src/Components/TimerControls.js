@@ -65,6 +65,7 @@ class TimerControls extends React.Component {
                                 max={99}
                                 value={this.state.hours}
                                 onChange={this.handleHourInput}
+                                size='large'
                             />
                         </li>
                         <li>
@@ -73,6 +74,7 @@ class TimerControls extends React.Component {
                                 max={59}
                                 value={this.state.minutes}
                                 onChange={this.handleMinuteInput}
+                                size='large'
                             />
                         </li>
                         <li>
@@ -81,6 +83,7 @@ class TimerControls extends React.Component {
                                 max={59}
                                 value={this.state.seconds}
                                 onChange={this.handleSecondInput}
+                                size='large'
                             />
                         </li>
                     </ul>

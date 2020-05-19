@@ -7,7 +7,7 @@ class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: 'You got this!'
+
         }
     }
 
@@ -63,25 +63,19 @@ class Timer extends Component {
         return pct;
     }
 
-    calculateMsg(pct) {
-        const msgs = ['apple', 'banana', 'coconut'];
-        if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
-            this.setState({
-                message: Math.floor(Math.random() * Math.floor(msgs.length))
-            })
-        }
-    }
-
     render() {
         const {
             stop,
             timerLength,
             timerStart,
         } = this.props;
-        this.calculateMsg(this.calculatePercent(timerStart, timerLength, stop));
-
+        const pct = this.calculatePercent(timerStart, timerLength, stop);
+        const msgs = ['apple', 'banana', 'coconut'];
+        var message = '';
+        if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
+            message = msgs[Math.floor(Math.random() * Math.floor(msgs.length))]
+        }
         return (
-
             <div className="timer" style={{ verticalAlign: "center" }}>
 
                 <Progress type="circle"
@@ -90,7 +84,7 @@ class Timer extends Component {
                     width={200}
                 />
 
-                <div>{this.state.message}</div>
+                <div>{message}</div>
             </div>
         );
     }
