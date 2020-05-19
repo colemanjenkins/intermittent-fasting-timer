@@ -21,16 +21,26 @@ class App extends Component {
           passed: true
         }
       ],
-      timerTime: 0,
-      timerStart: 0,
+      timerTime: 18 * 60 * 60 * 1000,
+      timerStart: 1589900551026,
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
+    this.newFailed = this.newFailed.bind(this);
   }
 
   updatePlannedTime(msTime) {
     this.setState({
       timerTime: msTime
     })
+  }
+  newFailed() {
+    const failedFast = {
+      startDate: 0,
+      endDate: 0,
+      actualTime: 0,
+      plannedTime: 0,
+      passed: 0
+    }
   }
 
   render() {
@@ -39,7 +49,7 @@ class App extends Component {
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
           <TimerControls updatePlannedTime={this.updatePlannedTime} />
-          <Timer />
+          <Timer timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
           <History fasts={this.state.fasts} />
           <Records />
         </div>
