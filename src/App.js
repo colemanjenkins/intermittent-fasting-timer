@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { PageHeader } from 'antd';
+
 import './App.css';
 import Timer from './Components/Timer.js';
 import History from './Components/History.js';
@@ -92,6 +94,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <PageHeader
+          title="Intermittent Fasting Tracker!" />
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
           <TimerControls updatePlannedTime={this.updatePlannedTime} newFailed={this.newFailed} />
