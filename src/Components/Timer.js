@@ -4,11 +4,20 @@ import { Progress } from 'antd';
 import "antd/dist/antd.css";
 
 class Timer extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            message: 'You got this!'
+            messages: [
+                'You got this!',
+                'WILLPOWER!!',
+                'What is hunger anyways?',
+            ],
+            oldMessageID: 0,
+            messageID: 0,
         }
+
+        this.handleMsg = this.handleMsg.bind(this);
     }
 
 
@@ -75,13 +84,36 @@ class Timer extends Component {
         return pct;
     }
 
-    calculateMsg(pct) {
-        const msgs = ['apple', 'banana', 'coconut'];
-        if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
-            this.setState({
-                message: Math.floor(Math.random() * Math.floor(msgs.length))
-            })
+    handleMsg = () =>{
+        // const msgs = ['apple', 'banana', 'coconut'];
+        // let oldNum = this.state.messageID;
+        let oldNum = newNum;
+        let newNum = Math.floor(Math.random() * this.state.messages.length);
+        while (newNum === oldNum) {
+            newNum = Math.floor(Math.random() * this.state.messages.length);
         }
+        return newNum;
+        // if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
+        //     this.setState({
+        //         messageID: newNum
+        //     })
+        // }
+    
+        // let newNum = Math.floor(Math.random() * this.state.messages.length)
+        // if (pct % 10 === 0) {
+        //     this.setState({
+        //         oldMessageID: this.state.messageID,
+        //         messageID: newNum
+        //     });
+        // }
+        //     while (this.state.oldMessageID === this.state.messageID) {
+        //         this.setState({
+        //             messageID: Math.floor(Math.random() * this.state.messages.length)
+        //         })
+        //     }
+        // this.setState({
+        //     messageID: 0
+        // })
     }
 
     render() {
@@ -90,8 +122,16 @@ class Timer extends Component {
             timerLength,
             timerStart,
         } = this.props;
-        // const pct = this.calculatePercent(timerStart, timerLength, stop)
-        this.calculateMsg(this.calculatePercent(timerStart, timerLength, stop));
+        let message = this.state.messages[this.state.messageID];
+        let percent = this.calculatePercent(timerStart, timerLength, stop);
+        let num = 0;
+        if (percent % 10 < 2 && percent !== 0 && percent !== 100) {
+            // this.handleMsg(percent);
+            num = this.handleMsg(num);
+        }
+
+        
+        
         // const msgs = ['apple', 'banana', 'coconut'];
         // if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
         //     this.setState({
@@ -108,7 +148,7 @@ class Timer extends Component {
                     width={200}
                 />
 
-                <div>{this.state.message}</div>
+                <div>{this.state.messages[num]}</div>
             </div>
         );
     }
