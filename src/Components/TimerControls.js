@@ -83,7 +83,7 @@ class TimerControls extends React.Component {
                 </div>
                 <div className="StartButton">
                     <Button type="submit"
-                        onClick={() => { this.props.updatePlannedTime(this.state.ms); this.clearTime() }}
+                        onClick={() => { this.clearTime(); this.props.updatePlannedTime(this.state.ms); }}
                     >Start Timer</Button>
                 </div>
                 <div className="GiveUp">
