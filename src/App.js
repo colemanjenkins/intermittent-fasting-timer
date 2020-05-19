@@ -22,9 +22,10 @@ class App extends Component {
         }
       ],
       timerTime: 18 * 60 * 60 * 1000,
-      timerStart: 1589900551026,
+      timerStart: 1589900551026 + 20 * 60 * 60 * 1000,
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
+    this.newSuccess = this.newSuccess.bind(this);
     this.newFailed = this.newFailed.bind(this);
   }
 
@@ -33,14 +34,39 @@ class App extends Component {
       timerTime: msTime
     })
   }
-  newFailed() {
-    const failedFast = {
-      startDate: 0,
-      endDate: 0,
-      actualTime: 0,
-      plannedTime: 0,
+
+  newSuccess() {
+    const successFast = {
+      //where do i get the info for the new successful fast, will this be stored in the state already
+      //as timerStart?
+      startDate: (Date.now() - this.state.timerTimer),
+      endDate: Date.now(),
+      actualTime: this.state.timerTime,
+      plannedTime: this.state.timerTime,
       passed: false
     }
+    const newFastList = [...this.state.fasts, successFast]
+    this.setState({
+      fasts: newFastList,
+      timerTime: 0,
+      timerStart: 0
+    })
+  }
+  newFailed() {
+    const failedFast = {
+      //where do i get the info for the new failed fast
+      startDate: (Date.now() - this.state.timerTimer),
+      endDate: Date.now(),
+      actualTime: 0,
+      plannedTime: this.state.timerTime,
+      passed: false
+    }
+    const newFastList = [...this.state.fasts, failedFast]
+    this.setState({
+      fasts: newFastList,
+      timerTime: 0,
+      timerStart: 0
+    })
   }
 
   render() {
