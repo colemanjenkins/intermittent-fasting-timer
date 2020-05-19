@@ -1,0 +1,16 @@
+
+.Controls {
+    display: inline;
+    margin: 0 auto;
+}
+
+.Table {
+    display: table;
+    margin: 0 auto;
+}
+ul#horizontal-list {
+    text-align: center; 
+}
+ul#horizontal-list li {
+    display:inline-block;
+}
