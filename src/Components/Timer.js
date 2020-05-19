@@ -4,6 +4,12 @@ import { Progress } from 'antd';
 import "antd/dist/antd.css";
 
 class Timer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: 'You got this!'
+        }
+    }
 
 
     //gives the difference between timer in the format: "(Hours):(Minutes)"
@@ -69,7 +75,14 @@ class Timer extends Component {
         return pct;
     }
 
-
+    calculateMsg(pct) {
+        const msgs = ['apple', 'banana', 'coconut'];
+        if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
+            this.setState({
+                message: Math.floor(Math.random() * Math.floor(msgs.length))
+            })
+        }
+    }
 
     render() {
         const {
@@ -77,6 +90,14 @@ class Timer extends Component {
             timerLength,
             timerStart,
         } = this.props;
+        // const pct = this.calculatePercent(timerStart, timerLength, stop)
+        this.calculateMsg(this.calculatePercent(timerStart, timerLength, stop));
+        // const msgs = ['apple', 'banana', 'coconut'];
+        // if (pct % 10 < 2 && pct !== 0 && pct !== 100) {
+        //     this.setState({
+        //         message: Math.floor(Math.random() * Math.floor(msgs.length))
+        //     })
+        // }
         return (
 
             <div className="timer" style={{ verticalAlign: "center" }}>
@@ -86,6 +107,8 @@ class Timer extends Component {
                     format={() => this.timeDisplay(timerStart, timerLength, stop)}
                     width={200}
                 />
+
+                <div>{this.state.message}</div>
             </div>
         );
     }

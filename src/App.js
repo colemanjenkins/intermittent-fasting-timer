@@ -68,7 +68,6 @@ class App extends Component {
       stop: false
     });
     console.log("timerTime: " + this.state.timerTime);
-
   }
 
   //this should be called when the timer gets to zero
@@ -78,7 +77,7 @@ class App extends Component {
       endDate: Date.now(),
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
-      passed: false,
+      passed: true,
       id: this.state.fasts[this.state.fasts.length-1].id + 1,
       status: this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)],
     }
@@ -86,8 +85,8 @@ class App extends Component {
     console.log(this.state.timerTime)
     this.setState({
       fasts: newFastList,
-      timerTime: 0,
-      timerStart: 0
+      timerStart: 0,
+      stop: true,
     })
   }
 
@@ -105,8 +104,8 @@ class App extends Component {
     console.log(this.state.timerTime)
     this.setState({
       fasts: newFastList,
-      timerTime: 0,
-      timerStart: 0
+      timerStart: 0,
+      stop: true,
     })
   }
 
@@ -115,7 +114,7 @@ class App extends Component {
       <div className="App">
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
-          <TimerControls updatePlannedTime={this.updatePlannedTime} />
+          <TimerControls updatePlannedTime={this.updatePlannedTime} newFailed={this.newFailed} />
           <Timer stop={this.state.stop} timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
           <History fasts={this.state.fasts} />
           <Records fasts={this.state.fasts} />
