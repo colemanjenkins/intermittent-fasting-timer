@@ -7,16 +7,6 @@ class History extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            failedFastsMessages: [
-                'Some room for improvement!',
-                'You got this next time!',
-                'Failure is an inevitable part of success!'
-            ],
-            successFastsMessages: [
-                'Good job!',
-                'Health guru!',
-                'Nice!'
-            ],
             showFastID: [],
         }
 
@@ -85,10 +75,8 @@ class History extends Component {
 
     parseTime = (time) => {
         let totalInSeconds = time / 1000;
-        // console.log("totalInSeconds: " + totalInSeconds)
 
         let hours = Math.floor(totalInSeconds / 3600);
-        // console.log("hours: " + hours)
         let remaining = totalInSeconds % 3600;
 
         let minutes = Math.floor(remaining / 60);
@@ -170,24 +158,13 @@ class History extends Component {
 
                                         {this.state.showFastID.includes(fast.id) &&
                                             <div className="expandedView">
-                                                Start: {startLong}<br />
-                                                End: {endLong} <br />
-                                                Planned Time: {plannedHours} h, {plannedMinutes} m, {plannedSeconds} s <br />
-                                                Actual Time: {actualHours} h, {actualMinutes} m, {actualSeconds} s <br />
-                                                Status:{" "}
-                                                {fast.passed &&
-                                                    <p
-                                                        style={{ display: "inline" }}
-                                                    >{this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)]}</p>
-                                                }
-                                                {!fast.passed &&
-                                                    <p
-                                                        style={{ display: "inline" }}
-                                                    >{this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)]}</p>
-                                                }
+                                                Start: {startLong}<br/>
+                                                End: {endLong} <br/>
+                                                Planned Time: {plannedHours} h, {plannedMinutes} m, {plannedSeconds} s <br/>
+                                                Actual Time: {actualHours} h, {actualMinutes} m, {actualSeconds} s <br/>
+                                                Status: {fast.status}
                                             </div>
                                         }
-                                        {/* <br/> */}
                                     </div>
                                 );
                             })}
