@@ -21,20 +21,23 @@ class TimerControls extends React.Component {
         console.log("e.target.value: " + e)
         this.setState(prevState => ({
             hours: e,
-            ms: (prevState.ms + e * 3600000)
+            ms: (e * 3600000)
         }));
     }
     handleMinuteInput(e) {
         this.setState(prevState => ({
             minutes: e,
-            ms: (prevState.ms + e * 60000)
+            ms: (e * 60000)
         }));
     }
     handleSecondInput(e) {
         this.setState(prevState => ({
             seconds: e,
-            ms: (prevState.ms + e * 1000)
+            ms: (e * 1000)
         }));
+    }
+    calculateTotalTime = (st) => {
+        return st.seconds * 1000 + st.minutes * 60000 + st.hours * 3600000;
     }
     clearTime() {
         this.setState({
@@ -83,7 +86,7 @@ class TimerControls extends React.Component {
                 </div>
                 <div className="StartButton">
                     <Button type="submit"
-                        onClick={() => { this.clearTime(); this.props.updatePlannedTime(this.state.ms); }}
+                        onClick={() => { this.props.updatePlannedTime(this.calculateTotalTime(this.state)); }}
                     >Start Timer</Button>
                 </div>
                 <div className="GiveUp">

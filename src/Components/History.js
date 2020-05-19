@@ -85,10 +85,10 @@ class History extends Component {
 
     parseTime = (time) => {
         let totalInSeconds = time / 1000;
-        console.log("totalInSeconds: " + totalInSeconds)
+        // console.log("totalInSeconds: " + totalInSeconds)
 
         let hours = Math.floor(totalInSeconds / 3600);
-        console.log("hours: " + hours)
+        // console.log("hours: " + hours)
         let remaining = totalInSeconds % 3600;
 
         let minutes = Math.floor(remaining / 60);
