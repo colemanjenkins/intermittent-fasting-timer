@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 
 class Timer extends Component {
 
+
     //gives the difference between timer in the format: "(Hours):(Minutes)"
     getHoursAndMinutes = (timerStart, timerLength) => {
         let diff = Date.now() - timerStart;
@@ -46,6 +47,8 @@ class Timer extends Component {
     componentWillUnmount() {
         clearInterval(this.interval);
     }
+
+
 
     render() {
         const {

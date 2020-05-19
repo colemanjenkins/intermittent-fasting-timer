@@ -12,6 +12,18 @@ class App extends Component {
     super(props)
     this.state = {
 
+      failedFastsMessages: [
+        'Some room for improvement!',
+        'You got this next time!',
+        'Failure is an inevitable part of success!'
+      ],
+
+      successFastsMessages: [
+          'Good job!',
+          'Health guru!',
+          'Nice!'
+      ],
+
       fasts: [
         {
           startDate: 1589836641396,
@@ -19,6 +31,7 @@ class App extends Component {
           actualTime: 9000,
           plannedTime: 9000,
           passed: true,
+          status: 'Good job!',
           id: 0,
         },
         {
@@ -27,6 +40,7 @@ class App extends Component {
           actualTime: 20000,
           plannedTime: 39000,
           passed: false,
+          status: 'Some room for improvement!',
           id: 1,
         }
       ],
@@ -53,6 +67,7 @@ class App extends Component {
     })
     console.log("timerTime: " + this.state.timerTime)
   }
+
   //this should be called when the timer gets to zero
   newSuccess() {
     const successFast = {
@@ -60,7 +75,9 @@ class App extends Component {
       endDate: Date.now(),
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
-      passed: false
+      passed: false,
+      id: this.state.fasts[this.state.fasts.length-1].id + 1,
+      status: this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, successFast]
     console.log(this.state.timerTime)
@@ -70,13 +87,16 @@ class App extends Component {
       timerStart: 0
     })
   }
+
   newFailed() {
     const failedFast = {
       startDate: (Date.now() - this.state.timerTimer),
       endDate: Date.now(),
       actualTime: 0,
       plannedTime: this.state.timerTime,
-      passed: false
+      passed: false,
+      id: this.state.fasts[this.state.fasts.length-1].id + 1,
+      status: this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, failedFast]
     console.log(this.state.timerTime)
