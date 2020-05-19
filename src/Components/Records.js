@@ -12,24 +12,24 @@ class Records extends Component {
 
     findLongestFast(fasts) {
         var time = 0;
-        console.log(time)
+        // console.log(time)
         fasts.map(fast => {
             if (fast.actualTime > time) {
                 time = fast.actualTime
             }
         })
-        console.log("Longest fast: " + time)
+        // console.log("Longest fast: " + time)
         return time;
     }
     findShortestFast(fasts) {
         var time = fasts[0].actualTime;
-        console.log(time)
+        // console.log(time)
         fasts.map(fast => {
             if (fast.actualTime < time) {
                 time = fast.actualTime
             }
         })
-        console.log("Shortest fast: " + time)
+        // console.log("Shortest fast: " + time)
         return time;
     }
     passRate(fasts) {
@@ -42,8 +42,8 @@ class Records extends Component {
                 fail++;
             }
         })
-        console.log("passed: " + pass)
-        console.log("failed: " + fail)
+        // console.log("passed: " + pass)
+        // console.log("failed: " + fail)
         return pass / (pass + fail);
     }
 

@@ -85,10 +85,10 @@ class History extends Component {
 
     parseTime = (time) => {
         let totalInSeconds = time / 1000;
-        console.log("totalInSeconds: " + totalInSeconds)
+        // console.log("totalInSeconds: " + totalInSeconds)
 
         let hours = Math.floor(totalInSeconds / 3600);
-        console.log("hours: " + hours)
+        // console.log("hours: " + hours)
         let remaining = totalInSeconds % 3600;
 
         let minutes = Math.floor(remaining / 60);
@@ -99,20 +99,20 @@ class History extends Component {
 
     handleExpand = (id) => {
         if (isEmpty(this.state.showFastID)) {
-            this.setState({ 
+            this.setState({
                 showFastID: [id],
             })
         } else {
-            this.setState({ 
+            this.setState({
                 showFastID: [...this.state.showFastID, id],
             })
         }
-        
+
     }
 
     handleUnexpand = (id) => {
         let newShowFastID = this.state.showFastID.filter(fast => fast !== id);
-        this.setState({ 
+        this.setState({
             showFastID: newShowFastID,
         })
     }
@@ -152,7 +152,7 @@ class History extends Component {
 
                                 return (
                                     <div>
-                                        {!this.state.showFastID.includes(fast.id) && 
+                                        {!this.state.showFastID.includes(fast.id) &&
                                             <button type="button" className="button" onClick={() => this.handleExpand(fast.id)}>></button>
                                         }
                                         {this.state.showFastID.includes(fast.id) &&
@@ -170,10 +170,10 @@ class History extends Component {
 
                                         {this.state.showFastID.includes(fast.id) &&
                                             <div className="expandedView">
-                                                Start: {startLong}<br/>
-                                                End: {endLong} <br/>
-                                                Planned Time: {plannedHours} h, {plannedMinutes} m, {plannedSeconds} s <br/>
-                                                Actual Time: {actualHours} h, {actualMinutes} m, {actualSeconds} s <br/>
+                                                Start: {startLong}<br />
+                                                End: {endLong} <br />
+                                                Planned Time: {plannedHours} h, {plannedMinutes} m, {plannedSeconds} s <br />
+                                                Actual Time: {actualHours} h, {actualMinutes} m, {actualSeconds} s <br />
                                                 Status:{" "}
                                                 {fast.passed &&
                                                     <p
@@ -187,7 +187,7 @@ class History extends Component {
                                                 }
                                             </div>
                                         }
-                                    {/* <br/> */}
+                                        {/* <br/> */}
                                     </div>
                                 );
                             })}
