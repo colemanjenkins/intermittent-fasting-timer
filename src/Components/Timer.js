@@ -58,35 +58,36 @@ class Timer extends Component {
         return pct;
     }
 
+    displaySecondTimer = (altStop, timerStart, now) => {
+        if (!altStop) {
+            let timeFull = now - timerStart;
+            let msInHour = 3600000;
+            let msInMinute = 60000;
+            let min = (Math.floor(timeFull / msInMinute)) % 60;
+            let hours = Math.floor(timeFull / msInHour);
+            if (min < 0)
+                min = 0;
+            if (hours < 0)
+                hours = 0;
+            let retString = hours + ":" + min;
+            if (min < 10)
+                retString = hours + ":0" + min;
+            let hr = "hours";
+            if (hours === 1)
+                hr = "hour";
+            return "Time since last fast - " + retString;
+        }
+        return '';
+    }
+
     render() {
         const {
             stop,
+            altStop,
             timerLength,
             timerStart,
-            newSuccess,
             now
         } = this.props;
-
-        // let percentGoal = 90;
-        // let percent = this.calculatePercent(timerStart, timerLength, stop);
-        // let percentGoal = Math.floor(percent/10)*10;
-        // console.log("PERCENT: " + percent)
-
-        // let num = 0;
-        // if (percent > 90) {
-        //     num = 0;
-        // } else {
-        //     num = this.handleMsg(percent, num);
-        // }
-        // let num = this.handleMsg(percent, this.state.messageID);
-        // console.log("num: " + num)
-        // const pct = this.calculatePercent(timerStart, timerLength, stop);
-        // const msgs = ['apple', 'banana', 'coconut'];
-        // var message = '';
-        // if (pct < percentGoal && pct !== 0 && pct !== 100) {
-        //     message = this.state.messages[Math.floor(Math.random() * Math.floor(this.state.messages.length))];
-        //     percentGoal -= 10;
-        // }
 
         return (
             <div className="timer" style={{ verticalAlign: "center" }}>
@@ -97,6 +98,9 @@ class Timer extends Component {
                     width={200}
                     style={{ marginLeft: 100 }}
                 />
+                <div>
+                    {this.displaySecondTimer(altStop, timerStart, now)}
+                </div>
 
                 {/* <br/><br/>
                 <div style={{ display: "flex", justifyContent: "center" }}>{this.state.messages[this.state.messageID]}</div> */}
