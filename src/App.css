@@ -8,7 +8,7 @@
   height: 1000px;
   grid-template: 500px 500px / 1fr 1fr 1fr;
   grid-template-areas: "controls timer rightUpper"
-                       "controls timer rightLower";
+                        "history history history";
 }
 
 .App{

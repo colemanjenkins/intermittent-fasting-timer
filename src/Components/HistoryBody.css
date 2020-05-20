@@ -1,3 +1,5 @@
+
+
 .button{
     margin-top: 10px;
     border-color: mistyrose;
@@ -19,10 +21,17 @@
 }
 
 .moreInfo {
-    margin-left: 25px;
+    margin-left: 10px;
+    font-size: 14px;
 }
 
 .infoLabel {
     font-weight: bold;
     display: inline;
+}
+
+.card {
+    width: 290px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
