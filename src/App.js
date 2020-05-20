@@ -58,7 +58,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("Component Did Mount!");
     this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 20);
   }
 
@@ -85,11 +84,9 @@ class App extends Component {
         timerStart: Date.now(),
         stop: false
       });
-      console.log("timerTime: " + this.state.timerTime);
     }
   }
 
-  //this should be called when the timer gets to zero
   newSuccess() {
     const successFast = {
       startDate: this.state.timerStart,
