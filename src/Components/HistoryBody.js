@@ -7,6 +7,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Input } from 'antd';
 
 class HistoryBody extends Component {
     constructor(props) {
@@ -80,11 +81,18 @@ class HistoryBody extends Component {
         })
     }
 
+    handleNoteInput(e) {
+        this.props.setState({
+            note: e.target.value
+        })
+    }
+
+
     render() {
-        
+
         return (
             <div className="historyBody" style={{ display: "flex", flexWrap: "wrap" }}>
-                
+
                 {this.props.fasts.map(fast => {
                     let startShort = this.timeStamp(fast.startDate, false)
                     let startLong = this.timeStamp(fast.startDate, true)
@@ -101,7 +109,7 @@ class HistoryBody extends Component {
                     let actualSeconds = actualTimes[2];
 
                     return (
-                        <div className="card"> 
+                        <div className="card">
                             <ExpansionPanel>
                                 <ExpansionPanelSummary
                                     expandIcon={<ExpandMoreIcon />}
@@ -109,31 +117,38 @@ class HistoryBody extends Component {
                                     id="panel1a-header"
                                 >
                                     <Typography className="heading">
-                                    <div className="topLevelInfo">
+                                        <div className="topLevelInfo">
 
-                                        {startShort}{" - "}{" "}
-                                        {fast.passed &&
-                                            <p style={{ color: 'green', display: "inline" }}>PASS</p>
-                                        }
-                                        {!fast.passed &&
-                                            <p style={{ color: 'red', display: "inline" }}>FAIL</p>
-                                        }
-                                    </div>
+                                            {startShort}{" - "}{" "}
+                                            {fast.passed &&
+                                                <p style={{ color: 'green', display: "inline" }}>PASS</p>
+                                            }
+                                            {!fast.passed &&
+                                                <p style={{ color: 'red', display: "inline" }}>FAIL</p>
+                                            }
+                                        </div>
                                     </Typography>
                                 </ExpansionPanelSummary>
                                 <ExpansionPanelDetails>
                                     <Typography>
-                                    <div className="moreInfo">
-                                        {/* {this.state.showFastID.includes(fast.id) && */}
-                                            <div className="expandedView">
+                                        <div className="moreInfo">
+                                            {/* {this.state.showFastID.includes(fast.id) && */}
+                                            <div className="expandedView" id="historyCard">
                                                 <li><p className="infoLabel">Start: </p>{startLong}</li>
                                                 <li><p className="infoLabel">End: </p>{endLong}</li>
                                                 <li><p className="infoLabel">Planned Time: </p>{plannedHours} h, {plannedMinutes} m, {plannedSeconds} s</li>
                                                 <li><p className="infoLabel">Actual Time: </p>{actualHours} h, {actualMinutes} m, {actualSeconds} s </li>
                                                 <li><p className="infoLabel">Status: </p>{fast.status}</li>
+                                                <li><p className="infoLabel">Note: </p>
+                                                    <Input.TextArea
+                                                        placeholder=""
+                                                        value={fast.note}
+                                                        onChange={(e) => this.props.editNote(e.target.value, fast.id)}
+                                                        autoSize={{ maxRows: 3 }}
+                                                    /></li>
                                             </div>
-                                        {/* } */}
-                                    </div>
+                                            {/* } */}
+                                        </div>
                                     </Typography>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>

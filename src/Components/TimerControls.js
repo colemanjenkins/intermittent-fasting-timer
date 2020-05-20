@@ -1,6 +1,6 @@
 import React from 'react';
 import './TimerControls.css';
-import { InputNumber, Button, Form, Input } from 'antd';
+import { InputNumber, Button } from 'antd';
 
 
 class TimerControls extends React.Component {

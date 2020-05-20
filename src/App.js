@@ -35,6 +35,7 @@ class App extends Component {
           passed: true,
           status: 'Good job!',
           id: 0,
+          note: '',
         },
         {
           startDate: 1289836641396,
@@ -44,6 +45,7 @@ class App extends Component {
           passed: false,
           status: 'Some room for improvement!',
           id: 1,
+          note: '',
         },
         {
           startDate: 1589836641396,
@@ -53,6 +55,7 @@ class App extends Component {
           passed: true,
           status: 'Good job!',
           id: 0,
+          note: '',
         },
         {
           startDate: 1289836641396,
@@ -62,6 +65,7 @@ class App extends Component {
           passed: false,
           status: 'Some room for improvement!',
           id: 1,
+          note: '',
         },
         {
           startDate: 1589836641396,
@@ -71,6 +75,7 @@ class App extends Component {
           passed: true,
           status: 'Good job!',
           id: 0,
+          note: '',
         },
         {
           startDate: 1289836641396,
@@ -80,6 +85,7 @@ class App extends Component {
           passed: false,
           status: 'Some room for improvement!',
           id: 1,
+          note: '',
         }
       ],
       timerTime: 18 * 60 * 60 * 1000,
@@ -91,6 +97,7 @@ class App extends Component {
     this.newSuccess = this.newSuccess.bind(this);
     this.newFailed = this.newFailed.bind(this);
     this.parseTime = this.parseTime.bind(this);
+    this.editNote = this.editNote.bind(this);
   }
 
   componentDidMount() {
@@ -132,6 +139,7 @@ class App extends Component {
       passed: true,
       id: this.state.fasts[this.state.fasts.length - 1].id + 1,
       status: successFastsMessages[Math.floor(Math.random() * successFastsMessages.length)],
+      note: '',
     }
     const newFastList = [...this.state.fasts, successFast]
     console.log(this.state.timerTime)
@@ -152,6 +160,7 @@ class App extends Component {
         passed: false,
         id: this.state.fasts[this.state.fasts.length - 1].id + 1,
         status: failedFastsMessages[Math.floor(Math.random() * failedFastsMessages.length)],
+        note: '',
       }
       const newFastList = [...this.state.fasts, failedFast]
       console.log(this.state.timerTime)
@@ -175,6 +184,18 @@ class App extends Component {
     return [hours, minutes, seconds];
   }
 
+  editNote(newText, key) {
+    const list = this.state.fasts
+    list.map(fast => {
+      if (fast.id === key) {
+        fast.note = newText
+      }
+    });
+    this.setState({
+      fasts: list
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -190,7 +211,8 @@ class App extends Component {
             now={this.state.currentTime} />
           <History
             fasts={this.state.fasts}
-            parseTime={this.parseTime} />
+            parseTime={this.parseTime}
+            editNote={this.editNote} />
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />

@@ -1,3 +1,8 @@
+
+body {
+  background-image: url("https://images.nintendolife.com/d5fc3c2675ad3/animal-crossing-wallpaper.original.jpg");
+}
+
 .dummyHeader {
   text-align: center;
   margin-right: 80px;
@@ -6,7 +11,7 @@
 .grid {
   display: grid;
   height: 1000px;
-  grid-template: 500px 500px / 1fr 1fr 1fr;
+  grid-template: 450px 300px / 1fr 1fr 1fr;
   grid-template-areas: "controls timer rightUpper"
                         "history history history";
 }
