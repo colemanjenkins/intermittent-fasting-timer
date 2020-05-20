@@ -58,11 +58,17 @@ class Records extends Component {
                     <p>Longest Fast: {longTime[0]} h, {longTime[1]} m, {longTime[2]} s</p>
                     <p>Shortest Fast: {shortTime[0]} h, {shortTime[1]} m, {shortTime[2]} s</p>
                     <b>Pass Rate: {Math.trunc(passRate)}%</b>
-                    <Progress percent={passRate} showInfo={false} trailColor="red"/>
+                    <Progress percent={passRate} showInfo={false} trailColor="red" />
                     <p>{message}</p>
                 </div>
             );
         }
+        return (
+            <div className="records">
+                <h2>Records</h2>
+                <p>No Records yet!</p>
+            </div>
+        );
     }
 }
 

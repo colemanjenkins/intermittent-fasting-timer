@@ -26,26 +26,7 @@ class App extends Component {
     super(props)
     this.state = {
 
-      fasts: [
-        {
-          startDate: 1589836641396,
-          endDate: 1589836650000,
-          actualTime: 9000,
-          plannedTime: 9000,
-          passed: true,
-          status: 'Good job!',
-          id: 0,
-        },
-        {
-          startDate: 1289836641396,
-          endDate: 1289836680000,
-          actualTime: 20000,
-          plannedTime: 39000,
-          passed: false,
-          status: 'Some room for improvement!',
-          id: 1,
-        }
-      ],
+      fasts: [],
       timerTime: 18 * 60 * 60 * 1000,
       timerStart: 0,
       currentTime: Date.now(),
@@ -90,13 +71,16 @@ class App extends Component {
   }
 
   newSuccess() {
+    let newID = 0;
+    if (this.state.fasts.length !== 0)
+      newID = this.state.fasts[this.state.fasts.length - 1].id + 1;
     const successFast = {
       startDate: this.state.timerStart,
       endDate: this.state.currentTime,
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
       passed: true,
-      id: this.state.fasts[this.state.fasts.length - 1].id + 1,
+      id: newID,
       status: successFastsMessages[Math.floor(Math.random() * successFastsMessages.length)],
     };
     const newFastList = [...this.state.fasts, successFast];
@@ -110,13 +94,16 @@ class App extends Component {
 
   newFailed() {
     if (!this.state.stop) {
+      let newID = 0;
+      if (this.state.fasts.length !== 0)
+        newID = this.state.fasts[this.state.fasts.length - 1].id + 1;
       const failedFast = {
         startDate: this.state.timerStart,
         endDate: this.state.currentTime,
         actualTime: this.state.currentTime - this.state.timerStart,
         plannedTime: this.state.timerTime,
         passed: false,
-        id: this.state.fasts[this.state.fasts.length - 1].id + 1,
+        id: newID,
         status: failedFastsMessages[Math.floor(Math.random() * failedFastsMessages.length)],
       };
       const newFastList = [...this.state.fasts, failedFast];
