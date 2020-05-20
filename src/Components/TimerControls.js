@@ -39,6 +39,7 @@ class TimerControls extends React.Component {
     calculateTotalTime = (st) => {
         return st.seconds * 1000 + st.minutes * 60000 + st.hours * 3600000;
     }
+    //not needed unless we want inputs to be cleared to zero
     clearTime() {
         this.setState({
             hours: 0,
@@ -64,6 +65,7 @@ class TimerControls extends React.Component {
                                 max={99}
                                 value={this.state.hours}
                                 onChange={this.handleHourInput}
+                                size='large'
                             />
                         </li>
                         <li>
@@ -72,6 +74,7 @@ class TimerControls extends React.Component {
                                 max={59}
                                 value={this.state.minutes}
                                 onChange={this.handleMinuteInput}
+                                size='large'
                             />
                         </li>
                         <li>
@@ -80,17 +83,20 @@ class TimerControls extends React.Component {
                                 max={59}
                                 value={this.state.seconds}
                                 onChange={this.handleSecondInput}
+                                size='large'
                             />
                         </li>
                     </ul>
                 </div>
                 <div className="StartButton">
                     <Button type="submit"
-                        onClick={() => { this.props.updatePlannedTime(this.calculateTotalTime(this.state)); }}
+                        onClick={() => this.props.updatePlannedTime(this.calculateTotalTime(this.state))}
                     >Start Timer</Button>
                 </div>
                 <div className="GiveUp">
-                    <Button type="submit" onClick={() => this.props.newFailed}>I failed :(</Button>
+                    <Button type="submit"
+                        onClick={() => { this.props.newFailed(); this.props.updatePlannedTime(0) }}
+                    >I failed :(</Button>
                 </div>
 
             </div>

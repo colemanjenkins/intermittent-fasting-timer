@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { PageHeader } from 'antd';
+
 import './App.css';
 import Timer from './Components/Timer.js';
 import History from './Components/History.js';
@@ -19,9 +21,9 @@ class App extends Component {
       ],
 
       successFastsMessages: [
-          'Good job!',
-          'Health guru!',
-          'Nice!'
+        'Good job!',
+        'Health guru!',
+        'Nice!'
       ],
 
       fasts: [
@@ -56,29 +58,37 @@ class App extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 1000);
+    if (this.state.timerTime + this.state.timerStart <= this.state.currentTime)
+      this.newSuccess();
   }
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
   updatePlannedTime(msTime) {
-    this.setState({
-      timerTime: msTime,
-      timerStart: Date.now(),
-      stop: false
-    });
-    console.log("timerTime: " + this.state.timerTime);
+    if (msTime === 0) {
+      this.setState({
+        stop: true,
+      })
+    } else {
+      this.setState({
+        timerTime: msTime,
+        timerStart: Date.now(),
+        stop: false
+      });
+      console.log("timerTime: " + this.state.timerTime);
+    }
   }
 
   //this should be called when the timer gets to zero
   newSuccess() {
     const successFast = {
-      startDate: (Date.now() - this.state.timerTimer),
+      startDate: (Date.now() - this.state.timerTime),
       endDate: Date.now(),
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
       passed: true,
-      id: this.state.fasts[this.state.fasts.length-1].id + 1,
+      id: this.state.fasts[this.state.fasts.length - 1].id + 1,
       status: this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, successFast]
@@ -92,12 +102,12 @@ class App extends Component {
 
   newFailed() {
     const failedFast = {
-      startDate: (Date.now() - this.state.timerTimer),
+      startDate: (Date.now() - this.state.timerTime),
       endDate: Date.now(),
       actualTime: 0,
       plannedTime: this.state.timerTime,
       passed: false,
-      id: this.state.fasts[this.state.fasts.length-1].id + 1,
+      id: this.state.fasts[this.state.fasts.length - 1].id + 1,
       status: this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, failedFast]
@@ -112,6 +122,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <PageHeader
+          title="Intermittent Fasting Tracker!" />
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
           <TimerControls updatePlannedTime={this.updatePlannedTime} newFailed={this.newFailed} />
