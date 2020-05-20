@@ -131,8 +131,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <PageHeader
-          title="Intermittent Fasting Tracker!" /> */}
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
           <TimerControls
