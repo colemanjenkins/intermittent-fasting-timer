@@ -1,6 +1,6 @@
 import React from 'react';
 import './TimerControls.css';
-import { InputNumber, Button } from 'antd';
+import { InputNumber, Button, Form, Input } from 'antd';
 
 
 class TimerControls extends React.Component {
@@ -53,40 +53,36 @@ class TimerControls extends React.Component {
         return (
             <div className="Controls">
                 <div className="InputLabels">
-                    <p>Hours</p>
-                    <p>Mins</p>
-                    <p>Secs</p>
+                    <b>Hours</b>
+                    <b>Mins</b>
+                    <b>Secs</b>
                 </div>
-                <div className="Table">
-                    <ul id="horizontal-list">
-                        <li>
-                            <InputNumber
-                                min={0}
-                                max={99}
-                                value={this.state.hours}
-                                onChange={this.handleHourInput}
-                                size='large'
-                            />
-                        </li>
-                        <li>
-                            <InputNumber
-                                min={0}
-                                max={59}
-                                value={this.state.minutes}
-                                onChange={this.handleMinuteInput}
-                                size='large'
-                            />
-                        </li>
-                        <li>
-                            <InputNumber
-                                min={0}
-                                max={59}
-                                value={this.state.seconds}
-                                onChange={this.handleSecondInput}
-                                size='large'
-                            />
-                        </li>
-                    </ul>
+                <div className="Inputs">
+                    <Form id='inputForm'>
+                        <InputNumber
+                            min={0}
+                            max={47}
+                            value={this.state.hours}
+                            onChange={this.handleHourInput}
+                            size='large'
+                        />
+                        <InputNumber
+                            min={0}
+                            max={59}
+                            value={this.state.minutes}
+                            onChange={this.handleMinuteInput}
+                            size='large'
+                            id='mins'
+                        />
+                        <InputNumber
+                            min={0}
+                            max={59}
+                            value={this.state.seconds}
+                            onChange={this.handleSecondInput}
+                            size='large'
+                            id='secs'
+                        />
+                    </Form>
                 </div>
                 <div className="StartButton">
                     <Button type="submit"

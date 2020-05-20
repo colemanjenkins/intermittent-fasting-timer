@@ -54,6 +54,7 @@ class App extends Component {
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
     this.newSuccess = this.newSuccess.bind(this);
     this.newFailed = this.newFailed.bind(this);
+    this.parseTime = this.parseTime.bind(this);
   }
 
   componentDidMount() {
@@ -129,6 +130,18 @@ class App extends Component {
     }
   }
 
+  parseTime = (time) => {
+    let totalInSeconds = time / 1000;
+
+    let hours = Math.floor(totalInSeconds / 3600);
+    let remaining = totalInSeconds % 3600;
+
+    let minutes = Math.floor(remaining / 60);
+    let seconds = remaining % 60;
+
+    return [hours, minutes, seconds];
+  }
+
   render() {
     return (
       <div className="App">
@@ -136,15 +149,20 @@ class App extends Component {
           title="Intermittent Fasting Tracker!" />
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
-          <TimerControls updatePlannedTime={this.updatePlannedTime}
+          <TimerControls
+            updatePlannedTime={this.updatePlannedTime}
             newFailed={this.newFailed} />
           <Timer stop={this.state.stop}
             timerLength={this.state.timerTime}
             timerStart={this.state.timerStart}
             newSuccess={this.newSuccess}
             now={this.state.currentTime} />
-          <History fasts={this.state.fasts} />
-          <Records fasts={this.state.fasts} />
+          <History
+            fasts={this.state.fasts}
+            parseTime={this.parseTime} />
+          <Records
+            fasts={this.state.fasts}
+            parseTime={this.parseTime} />
         </div>
 
       </div>
