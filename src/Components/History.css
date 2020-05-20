@@ -1,3 +1,4 @@
 .history {
-  grid-area: rightLower;
+  margin-left: 20px;
+  grid-area: history;
 }

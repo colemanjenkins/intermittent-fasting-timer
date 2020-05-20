@@ -25,7 +25,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
       fasts: [],
       timerTime: 18 * 60 * 60 * 1000,
       timerStart: 0,

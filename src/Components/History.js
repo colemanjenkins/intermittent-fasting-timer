@@ -8,7 +8,7 @@ class History extends Component {
     render() {
         return (
             <div className="history">
-                <div className="sectionHeader">History</div>
+                <div className="sectionHeader"><h2>History</h2></div>
                 {isEmpty(this.props.fasts) &&
                     <div className="emptyMessage">
                         No fasts yet. Select a template fast or create a custom fast to start!

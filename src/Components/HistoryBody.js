@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import './HistoryBody.css';
 import { isEmpty } from "lodash";
+import { makeStyles } from '@material-ui/core/styles';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class HistoryBody extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -76,8 +81,10 @@ class HistoryBody extends Component {
     }
 
     render() {
+        
         return (
-            <div className="historyBody">
+            <div className="historyBody" style={{ display: "flex", flexWrap: "wrap" }}>
+                
                 {this.props.fasts.map(fast => {
                     let startShort = this.timeStamp(fast.startDate, false)
                     let startLong = this.timeStamp(fast.startDate, true)
@@ -94,35 +101,42 @@ class HistoryBody extends Component {
                     let actualSeconds = actualTimes[2];
 
                     return (
-                        <div> 
-                            <div className="topLevelInfo">
-                                {!this.state.showFastID.includes(fast.id) &&
-                                    <button type="button" className="button" onClick={() => this.handleExpand(fast.id)}>></button>
-                                }
-                                {this.state.showFastID.includes(fast.id) &&
-                                    <button type="button" className="button" onClick={() => this.handleUnexpand(fast.id)}>v</button>
-                                }{" "}
+                        <div className="card"> 
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                >
+                                    <Typography className="heading">
+                                    <div className="topLevelInfo">
 
-                                {startShort}{" - "}{" "}
-                                {fast.passed &&
-                                    <p style={{ color: 'green', display: "inline" }}>PASS</p>
-                                }
-                                {!fast.passed &&
-                                    <p style={{ color: 'red', display: "inline" }}>FAIL</p>
-                                }
-                            </div>
-
-                            <div className="moreInfo">
-                                {this.state.showFastID.includes(fast.id) &&
-                                    <div className="expandedView">
-                                        <li><p className="infoLabel">Start: </p>{startLong}</li>
-                                        <li><p className="infoLabel">End: </p>{endLong}</li>
-                                        <li><p className="infoLabel">Planned Time: </p>{plannedHours} h, {plannedMinutes} m, {plannedSeconds} s</li>
-                                        <li><p className="infoLabel">Actual Time: </p>{actualHours} h, {actualMinutes} m, {actualSeconds} s </li>
-                                        <li><p className="infoLabel">Status: </p>{fast.status}</li>
+                                        {startShort}{" - "}{" "}
+                                        {fast.passed &&
+                                            <p style={{ color: 'green', display: "inline" }}>PASS</p>
+                                        }
+                                        {!fast.passed &&
+                                            <p style={{ color: 'red', display: "inline" }}>FAIL</p>
+                                        }
                                     </div>
-                                }
-                            </div>
+                                    </Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails>
+                                    <Typography>
+                                    <div className="moreInfo">
+                                        {/* {this.state.showFastID.includes(fast.id) && */}
+                                            <div className="expandedView">
+                                                <li><p className="infoLabel">Start: </p>{startLong}</li>
+                                                <li><p className="infoLabel">End: </p>{endLong}</li>
+                                                <li><p className="infoLabel">Planned Time: </p>{plannedHours} h, {plannedMinutes} m, {plannedSeconds} s</li>
+                                                <li><p className="infoLabel">Actual Time: </p>{actualHours} h, {actualMinutes} m, {actualSeconds} s </li>
+                                                <li><p className="infoLabel">Status: </p>{fast.status}</li>
+                                            </div>
+                                        {/* } */}
+                                    </div>
+                                    </Typography>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
                         </div>
                     );
                 })}
