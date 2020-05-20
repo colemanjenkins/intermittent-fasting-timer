@@ -8,23 +8,23 @@ import Records from './Components/Records.js';
 import TimerControls from './Components/TimerControls.js';
 import './Components/TimerControls.css';
 
+const failedFastsMessages = [
+  'Some room for improvement!',
+  'You got this next time!',
+  'Failure is an inevitable part of success!'
+];
+
+const successFastsMessages = [
+  'Good job!',
+  'Health guru!',
+  'Nice!'
+];
+
 class App extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-
-      failedFastsMessages: [
-        'Some room for improvement!',
-        'You got this next time!',
-        'Failure is an inevitable part of success!'
-      ],
-
-      successFastsMessages: [
-        'Good job!',
-        'Health guru!',
-        'Nice!'
-      ],
 
       fasts: [
         {
@@ -89,7 +89,7 @@ class App extends Component {
       plannedTime: this.state.timerTime,
       passed: true,
       id: this.state.fasts[this.state.fasts.length - 1].id + 1,
-      status: this.state.successFastsMessages[Math.floor(Math.random() * this.state.successFastsMessages.length)],
+      status: successFastsMessages[Math.floor(Math.random() * successFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, successFast]
     console.log(this.state.timerTime)
@@ -108,7 +108,7 @@ class App extends Component {
       plannedTime: this.state.timerTime,
       passed: false,
       id: this.state.fasts[this.state.fasts.length - 1].id + 1,
-      status: this.state.failedFastsMessages[Math.floor(Math.random() * this.state.failedFastsMessages.length)],
+      status: failedFastsMessages[Math.floor(Math.random() * failedFastsMessages.length)],
     }
     const newFastList = [...this.state.fasts, failedFast]
     console.log(this.state.timerTime)
