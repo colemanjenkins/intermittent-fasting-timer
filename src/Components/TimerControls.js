@@ -1,6 +1,6 @@
 import React from 'react';
 import './TimerControls.css';
-import { InputNumber, Button, Form, Input } from 'antd';
+import { InputNumber, Button, Form, Input, Radio } from 'antd';
 
 
 class TimerControls extends React.Component {
@@ -10,7 +10,8 @@ class TimerControls extends React.Component {
             hours: 0,
             minutes: 0,
             seconds: 0,
-            ms: 0
+            ms: 0,
+            custom: false,
         }
     }
 
@@ -40,10 +41,33 @@ class TimerControls extends React.Component {
         return st.seconds * 1000 + st.minutes * 60000 + st.hours * 3600000;
     }
 
-    render() {
-        return (
-            <div className="Controls">
+    handleSelect = (event) => {
+        let value = event.target.value;
+        if (value === "16-8") {
+            this.setState({
+                custom: false,
+                hours: 16,
+                minutes: 0,
+                seconds: 0
+            });
+        } else if (value === "18-6") {
+            this.setState({
+                custom: false,
+                hours: 18,
+                minutes: 0,
+                seconds: 0
+            });
+        } else { //value === "custom"
+            this.setState({
+                custom: true
+            });
+        }
+    }
 
+    render() {
+        let options;
+        if (this.state.custom) {
+            options =
                 <div className="Table">
                     <ul id="horizontal-list">
                         <li>
@@ -78,8 +102,14 @@ class TimerControls extends React.Component {
                         </li>
                     </ul>
                 </div>
+        } else {
+            options = null;
+        }
 
+        return (
+            <div className="Controls">
                 <div className="buttons">
+
                     <div className="StartButton">
                         <Button type="submit"
                             onClick={() => this.props.updatePlannedTime(this.calculateTotalTime(this.state))}
@@ -91,6 +121,17 @@ class TimerControls extends React.Component {
                             type="primary" danger>I failed :(</Button>
                     </div>
                 </div>
+                <div>
+
+                </div>
+                <Radio.Group onChange={this.handleSelect} defaultValue="16:8" className="select">
+                    <Radio.Button value="16-8">16:8</Radio.Button>
+                    <Radio.Button value="18-6">18:6</Radio.Button>
+                    <Radio.Button value="custom">Custom</Radio.Button>
+                </Radio.Group>
+                {options}
+
+
 
             </div>
         );
