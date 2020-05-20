@@ -102,7 +102,9 @@ class Timer extends Component {
                     {this.displaySecondTimer(altStop, timerStart, now)}
                 </div>
 
-                <Message stop={stop} timerLength={timerLength} timerStart={timerStart} />
+                <div className="message">
+                    <Message stop={stop} timerLength={timerLength} timerStart={timerStart} />
+                </div>
             </div>
         );
     }
