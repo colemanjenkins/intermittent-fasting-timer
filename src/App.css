@@ -10,3 +10,7 @@
   grid-template-areas: "controls timer rightUpper"
                        "controls timer rightLower";
 }
+
+.App{
+  margin-top: 30px;
+}

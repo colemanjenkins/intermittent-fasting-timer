@@ -12,24 +12,20 @@ class Records extends Component {
 
     findLongestFast(fasts) {
         var time = 0;
-        // console.log(time)
         fasts.map(fast => {
             if (fast.actualTime > time) {
                 time = fast.actualTime
             }
         })
-        // console.log("Longest fast: " + time)
         return time;
     }
     findShortestFast(fasts) {
         var time = fasts[0].actualTime;
-        // console.log(time)
         fasts.map(fast => {
             if (fast.actualTime < time) {
                 time = fast.actualTime
             }
         })
-        // console.log("Shortest fast: " + time)
         return time;
     }
     passRate(fasts) {
@@ -42,28 +38,31 @@ class Records extends Component {
                 fail++;
             }
         })
-        // console.log("passed: " + pass)
-        // console.log("failed: " + fail)
         return pass / (pass + fail);
     }
 
     render() {
+
         const list = this.props.fasts;
-        const passRate = this.passRate(list) * 100;
-        var message = "You're doing great!";
-        if (passRate < .5) {
-            message = 'Try setting shorter goals and work your way up!'
+        if (list.length > 0) {
+            const longTime = this.props.parseTime(this.findLongestFast(list));
+            const shortTime = this.props.parseTime(this.findShortestFast(list));
+            const passRate = this.passRate(list) * 100;
+            var message = "You're doing great!";
+            if (passRate < .5) {
+                message = 'Try setting shorter goals and work your way up!'
+            }
+            return (
+                <div className="records">
+                    <h2>Records</h2>
+                    <p>Longest Fast: {longTime[0]} h, {longTime[1]} m, {longTime[2]} s</p>
+                    <p>Shortest Fast: {shortTime[0]} h, {shortTime[1]} m, {shortTime[2]} s</p>
+                    <b>Pass Rate: {Math.trunc(passRate)}%</b>
+                    <Progress percent={passRate} showInfo={false} trailColor="red"/>
+                    <p>{message}</p>
+                </div>
+            );
         }
-        return (
-            <div className="records">
-                <h2>Records</h2>
-                <p>Longest Fast: {this.findLongestFast(list)}</p>
-                <p>Shortest Fast: {this.findShortestFast(list)}</p>
-                <b>Pass Rate: {Math.trunc(passRate)}%</b>
-                <Progress percent={passRate} trailColor="red" />
-                <p>{message}</p>
-            </div>
-        );
     }
 }
 

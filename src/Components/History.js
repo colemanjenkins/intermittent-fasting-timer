@@ -16,7 +16,10 @@ class History extends Component {
                 }
 
                 {!isEmpty(this.props.fasts) &&
-                    <HistoryBody fasts={this.props.fasts}/>
+                    <HistoryBody 
+                        fasts={this.props.fasts}
+                        parseTime={this.props.parseTime}
+                    />
                 }
             </div>
         );

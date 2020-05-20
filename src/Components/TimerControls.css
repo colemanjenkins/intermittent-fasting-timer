@@ -1,22 +1,26 @@
 
 .Controls {
-    display: inline;
+    display: grids;
+    grid: 150px / auto auto auto;
     margin: 0 auto;
     grid-area: controls;
+    /* background-color: yellow; */
 }
 
 .InputLabels {
-    display: inline-flex;
-    justify-content: space-between;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .Table {
     display: table;
     margin-left: 0px;
 }
-ul#horizontal-list {
-    text-align: center; 
+
+b {
+    width: 50px;
 }
+
 ul#horizontal-list li {
     display:inline-block;
 }
@@ -28,4 +32,13 @@ ul#horizontal-list li {
 
 .GiveUp {
     margin-left: 40px;
+}
+
+.Inputs {
+    display: flex;
+    
+}
+
+#inputForm input{
+    width: 50px;
 }

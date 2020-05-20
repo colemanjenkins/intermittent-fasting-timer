@@ -6,27 +6,10 @@ import Message from './Message.js';
 
 class Timer extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            messages: [
-                'You got this!',
-                'WILLPOWER!!',
-                'What is hunger anyways?',
-            ],
-            oldMessageID: 0,
-            messageID: 0,
-            percentGoal: 90,
-
-        }
-
-        // this.handleMsg = this.handleMsg.bind(this);
-    }
-
 
     //gives the difference between timer in the format: "(Hours):(Minutes)"
-    getHoursAndMinutes = (timerStart, timerLength, stop) => {
-        let diff = Date.now() - timerStart;
+    getHoursAndMinutes = (timerStart, timerLength, stop, now) => {
+        let diff = now - timerStart;
         let timeFull = timerLength - diff;
         let msInHour = 3600000;
         let msInMinute = 60000;
@@ -46,8 +29,8 @@ class Timer extends Component {
         return retString;
     };
 
-    getSeconds = (timerStart, timerLength, stop) => {
-        let diff = Date.now() - timerStart;
+    getSeconds = (timerStart, timerLength, stop, now) => {
+        let diff = now - timerStart;
         let timeFull = timerLength - diff;
         let msInSecond = 1000;
         let sec = (Math.floor(timeFull / msInSecond)) % 60;
@@ -60,49 +43,32 @@ class Timer extends Component {
         return sec + "";
     }
 
-    timeDisplay = (timerStart, timerLength, stop) => {
-        return this.getHoursAndMinutes(timerStart, timerLength, stop) +
-            ":" + this.getSeconds(timerStart, timerLength, stop);
+    timeDisplay = (timerStart, timerLength, stop, now) => {
+        return this.getHoursAndMinutes(timerStart, timerLength, stop, now) +
+            ":" + this.getSeconds(timerStart, timerLength, stop, now);
     }
 
-    calculatePercent = (timerStart, timerLength, stop) => {
+    calculatePercent = (timerStart, timerLength, stop, now) => {
         if (stop)
             return 100;
-        let diff = Date.now() - timerStart;
+        let diff = now - timerStart;
         let pct = 100 - 100 * (diff / timerLength);
         if (pct < 0)
             return 0;
         return pct;
     }
 
-    // handleMsg = (percent, num) =>{
-    //     let newNum = num;
-    //     let goal = this.state.percentGoal;
-        
-    //     if (percent < goal && percent !== 0 && percent !== 100) {
-    //         // console.log("percent < this.state.percentGoal: " + (percent < this.state.percentGoal))
-    //         newNum = Math.floor(Math.random() * this.state.messages.length);
-    //         while (newNum === num) {
-    //             newNum = Math.floor(Math.random() * this.state.messages.length);
-    //         }
-    //         this.setState({
-    //             percentGoal: goal - 10,
-    //             messageID: newNum,
-    //         });
-    //     }
-        
-    //     // return newNum;
-    // }
-
     render() {
         const {
             stop,
             timerLength,
             timerStart,
+            newSuccess,
+            now
         } = this.props;
 
         // let percentGoal = 90;
-        let percent = this.calculatePercent(timerStart, timerLength, stop);
+        // let percent = this.calculatePercent(timerStart, timerLength, stop);
         // let percentGoal = Math.floor(percent/10)*10;
         // console.log("PERCENT: " + percent)
 
@@ -126,10 +92,10 @@ class Timer extends Component {
             <div className="timer" style={{ verticalAlign: "center" }}>
 
                 <Progress type="circle"
-                    percent={this.calculatePercent(timerStart, timerLength, stop)}
-                    format={() => this.timeDisplay(timerStart, timerLength, stop)}
+                    percent={this.calculatePercent(timerStart, timerLength, stop, now)}
+                    format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
                     width={200}
-                    style={{ marginLeft:100 }}
+                    style={{ marginLeft: 100 }}
                 />
 
                 {/* <br/><br/>

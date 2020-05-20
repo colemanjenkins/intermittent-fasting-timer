@@ -55,18 +55,6 @@ class HistoryBody extends Component {
         return output;
     }
 
-    parseTime = (time) => {
-        let totalInSeconds = time / 1000;
-
-        let hours = Math.floor(totalInSeconds / 3600);
-        let remaining = totalInSeconds % 3600;
-
-        let minutes = Math.floor(remaining / 60);
-        let seconds = remaining % 60;
-
-        return [hours, minutes, seconds];
-    }
-
     handleExpand = (id) => {
         if (isEmpty(this.state.showFastID)) {
             this.setState({
@@ -95,12 +83,12 @@ class HistoryBody extends Component {
                     let startLong = this.timeStamp(fast.startDate, true)
                     let endLong = this.timeStamp(fast.endDate, true)
 
-                    let plannedTimes = this.parseTime(fast.plannedTime);
+                    let plannedTimes = this.props.parseTime(fast.plannedTime);
                     let plannedHours = plannedTimes[0];
                     let plannedMinutes = plannedTimes[1];
                     let plannedSeconds = plannedTimes[2];
 
-                    let actualTimes = this.parseTime(fast.actualTime);
+                    let actualTimes = this.props.parseTime(fast.actualTime);
                     let actualHours = actualTimes[0];
                     let actualMinutes = actualTimes[1];
                     let actualSeconds = actualTimes[2];

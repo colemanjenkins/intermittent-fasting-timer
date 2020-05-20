@@ -1,6 +1,6 @@
 import React from 'react';
 import './TimerControls.css';
-import { InputNumber, Button } from 'antd';
+import { InputNumber, Button, Form, Input } from 'antd';
 
 
 class TimerControls extends React.Component {
@@ -53,6 +53,7 @@ class TimerControls extends React.Component {
     render() {
         return (
             <div className="Controls">
+
                 <div className="Table">
                     <ul id="horizontal-list">
                         <li>
@@ -87,6 +88,43 @@ class TimerControls extends React.Component {
                         </li>
                     </ul>
                 </div>
+
+                {/* <div className="InputLabels">
+                    <b>Hours</b>
+                    <b>Mins</b>
+                    <b>Secs</b>
+                </div> */}
+                {/* <div className="Inputs">
+                    <Form id='inputForm'>
+                        <label>Hours</label><br/>
+                        <InputNumber
+                            min={0}
+                            max={47}
+                            value={this.state.hours}
+                            onChange={this.handleHourInput}
+                            size='large'
+                        />
+                        <label>Mins</label><br/>
+                        <InputNumber
+                            min={0}
+                            max={59}
+                            value={this.state.minutes}
+                            onChange={this.handleMinuteInput}
+                            size='large'
+                            id='mins'
+                        />
+                        <label>Secs</label><br/>
+                        <InputNumber
+                            min={0}
+                            max={59}
+                            value={this.state.seconds}
+                            onChange={this.handleSecondInput}
+                            size='large'
+                            id='secs'
+                        />
+                    </Form>
+
+                </div> */}
 
                 <div className="buttons">
                     <div className="StartButton">
