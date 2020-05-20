@@ -46,7 +46,7 @@ class App extends Component {
           id: 1,
         }
       ],
-      timerTime: 17 * 60 * 60 * 1000,
+      timerTime: 18 * 60 * 60 * 1000,
       timerStart: 0,
       currentTime: Date.now(),
       stop: true
@@ -57,10 +57,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 1000);
-    if (this.state.timerTime + this.state.timerStart <= this.state.currentTime)
-      this.newSuccess();
+    console.log("Component Did Mount!");
+    this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 20);
   }
+
+  componentDidUpdate() {
+    if (!this.state.stop &&
+      ((this.state.timerTime + this.state.timerStart <= this.state.currentTime + 10)
+        && (this.state.timerTime + this.state.timerStart >= this.state.currentTime - 10))) {
+      this.newSuccess();
+    }
+  }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -83,8 +91,8 @@ class App extends Component {
   //this should be called when the timer gets to zero
   newSuccess() {
     const successFast = {
-      startDate: (Date.now() - this.state.timerTime),
-      endDate: Date.now(),
+      startDate: this.state.timerStart,
+      endDate: this.state.currentTime,
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
       passed: true,
@@ -101,22 +109,24 @@ class App extends Component {
   }
 
   newFailed() {
-    const failedFast = {
-      startDate: (Date.now() - this.state.timerTime),
-      endDate: Date.now(),
-      actualTime: 0,
-      plannedTime: this.state.timerTime,
-      passed: false,
-      id: this.state.fasts[this.state.fasts.length - 1].id + 1,
-      status: failedFastsMessages[Math.floor(Math.random() * failedFastsMessages.length)],
+    if (!this.state.stop) {
+      const failedFast = {
+        startDate: this.state.timerStart,
+        endDate: this.state.currentTime,
+        actualTime: this.state.currentTime - this.state.timerStart,
+        plannedTime: this.state.timerTime,
+        passed: false,
+        id: this.state.fasts[this.state.fasts.length - 1].id + 1,
+        status: failedFastsMessages[Math.floor(Math.random() * failedFastsMessages.length)],
+      }
+      const newFastList = [...this.state.fasts, failedFast]
+      console.log(this.state.timerTime)
+      this.setState({
+        fasts: newFastList,
+        timerStart: 0,
+        stop: true,
+      })
     }
-    const newFastList = [...this.state.fasts, failedFast]
-    console.log(this.state.timerTime)
-    this.setState({
-      fasts: newFastList,
-      timerStart: 0,
-      stop: true,
-    })
   }
 
   render() {
@@ -126,8 +136,13 @@ class App extends Component {
           title="Intermittent Fasting Tracker!" />
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
-          <TimerControls updatePlannedTime={this.updatePlannedTime} newFailed={this.newFailed} />
-          <Timer stop={this.state.stop} timerLength={this.state.timerTime} timerStart={this.state.timerStart} />
+          <TimerControls updatePlannedTime={this.updatePlannedTime}
+            newFailed={this.newFailed} />
+          <Timer stop={this.state.stop}
+            timerLength={this.state.timerTime}
+            timerStart={this.state.timerStart}
+            newSuccess={this.newSuccess}
+            now={this.state.currentTime} />
           <History fasts={this.state.fasts} />
           <Records fasts={this.state.fasts} />
         </div>

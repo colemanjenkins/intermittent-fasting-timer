@@ -22,7 +22,7 @@ class Message extends Component {
     }
 
     calculatePercent = (timerStart, timerLength, stop) => {
-        console.log("timerStart, timerLength, stop: " + timerStart + ' ' + timerLength + ' ' + stop);
+        // console.log("timerStart, timerLength, stop: " + timerStart + ' ' + timerLength + ' ' + stop);
         if (stop)
             return 100;
         let diff = Date.now() - timerStart;
@@ -32,13 +32,13 @@ class Message extends Component {
         return pct;
     }
 
-    handleMsg = (percent, num) =>{
+    handleMsg = (percent, num) => {
         let newNum = num;
         let goal = this.state.percentGoal;
         // console.log("percent < this.state.percentGoal: " + percent + ' | '+ this.state.percentGoal + ' ' + (percent < this.state.percentGoal));
         // console.log("handleMsg");
         if (percent < goal && percent !== 0 && percent !== 100) {
-            console.log("percent < this.state.percentGoal: " + (percent < this.state.percentGoal))
+            // console.log("percent < this.state.percentGoal: " + (percent < this.state.percentGoal))
             newNum = Math.floor(Math.random() * this.state.messages.length);
             while (newNum === num) {
                 newNum = Math.floor(Math.random() * this.state.messages.length);
@@ -48,7 +48,7 @@ class Message extends Component {
                 messageID: newNum,
             });
         }
-        
+
         // return newNum;
     }
 
@@ -61,7 +61,7 @@ class Message extends Component {
 
         // let percentGoal = 90;
         let percent = this.calculatePercent(timerStart, timerLength, stop);
-        console.log("percent: " + percent);
+        // console.log("percent: " + percent);
         // let percentGoal = Math.floor(percent/10)*10;
         // console.log("PERCENT: " + percent)
 
@@ -86,7 +86,7 @@ class Message extends Component {
 
         return (
             <div className="timer" style={{ verticalAlign: "center" }}>
-                <br/><br/>
+                <br /><br />
                 {/* <div>{this.state.messages[num]}</div> */}
                 <div style={{ display: "flex", justifyContent: "center" }}>{this.state.messages[this.state.messageID]}</div>
                 {/* <div>{message}</div> */}
