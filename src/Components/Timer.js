@@ -63,44 +63,26 @@ class Timer extends Component {
             stop,
             timerLength,
             timerStart,
-            newSuccess,
             now
         } = this.props;
 
-        // let percentGoal = 90;
-        // let percent = this.calculatePercent(timerStart, timerLength, stop);
-        // let percentGoal = Math.floor(percent/10)*10;
-        // console.log("PERCENT: " + percent)
-
-        // let num = 0;
-        // if (percent > 90) {
-        //     num = 0;
-        // } else {
-        //     num = this.handleMsg(percent, num);
-        // }
-        // let num = this.handleMsg(percent, this.state.messageID);
-        // console.log("num: " + num)
-        // const pct = this.calculatePercent(timerStart, timerLength, stop);
-        // const msgs = ['apple', 'banana', 'coconut'];
-        // var message = '';
-        // if (pct < percentGoal && pct !== 0 && pct !== 100) {
-        //     message = this.state.messages[Math.floor(Math.random() * Math.floor(this.state.messages.length))];
-        //     percentGoal -= 10;
-        // }
-
         return (
-            <div className="timer" style={{ verticalAlign: "center" }}>
+            <div >
+                <div className='timer'>
+                    <Progress type="circle"
+                        percent={this.calculatePercent(timerStart, timerLength, stop, now)}
+                        format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
+                        width={200}
+                    />
+                </div>
+                <div className='message'>
+                    <Message
+                        stop={stop}
+                        timerLength={timerLength}
+                        timerStart={timerStart}
+                    />
+                </div>
 
-                <Progress type="circle"
-                    percent={this.calculatePercent(timerStart, timerLength, stop, now)}
-                    format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
-                    width={200}
-                    style={{ marginLeft: 100 }}
-                />
-
-                {/* <br/><br/>
-                <div style={{ display: "flex", justifyContent: "center" }}>{this.state.messages[this.state.messageID]}</div> */}
-                <Message stop={stop} timerLength={timerLength} timerStart={timerStart} />
             </div>
         );
     }

@@ -57,7 +57,7 @@ class TimerControls extends React.Component {
                 <div className="Table">
                     <ul id="horizontal-list">
                         <li>
-                            <label>Hours</label><br/>
+                            <label>Hours</label><br />
                             <InputNumber
                                 min={0}
                                 max={99}
@@ -67,7 +67,7 @@ class TimerControls extends React.Component {
                             />
                         </li>
                         <li>
-                            <label>Mins</label><br/>
+                            <label>Mins</label><br />
                             <InputNumber
                                 min={0}
                                 max={59}
@@ -77,7 +77,7 @@ class TimerControls extends React.Component {
                             />
                         </li>
                         <li>
-                            <label>Secs</label><br/>
+                            <label>Secs</label><br />
                             <InputNumber
                                 min={0}
                                 max={59}
@@ -89,53 +89,16 @@ class TimerControls extends React.Component {
                     </ul>
                 </div>
 
-                {/* <div className="InputLabels">
-                    <b>Hours</b>
-                    <b>Mins</b>
-                    <b>Secs</b>
-                </div> */}
-                {/* <div className="Inputs">
-                    <Form id='inputForm'>
-                        <label>Hours</label><br/>
-                        <InputNumber
-                            min={0}
-                            max={47}
-                            value={this.state.hours}
-                            onChange={this.handleHourInput}
-                            size='large'
-                        />
-                        <label>Mins</label><br/>
-                        <InputNumber
-                            min={0}
-                            max={59}
-                            value={this.state.minutes}
-                            onChange={this.handleMinuteInput}
-                            size='large'
-                            id='mins'
-                        />
-                        <label>Secs</label><br/>
-                        <InputNumber
-                            min={0}
-                            max={59}
-                            value={this.state.seconds}
-                            onChange={this.handleSecondInput}
-                            size='large'
-                            id='secs'
-                        />
-                    </Form>
-
-                </div> */}
-
                 <div className="buttons">
                     <div className="StartButton">
                         <Button type="submit"
                             onClick={() => this.props.updatePlannedTime(this.calculateTotalTime(this.state))}
-                        type="primary">Start Timer</Button>
+                            type="primary">Start Timer</Button>
                     </div>
                     <div className="GiveUp">
                         <Button type="submit"
                             onClick={() => { this.props.newFailed(); this.props.updatePlannedTime(0) }}
-                        type="primary" danger>I failed :(</Button>
+                            type="primary" danger>I failed :(</Button>
                     </div>
                 </div>
 
