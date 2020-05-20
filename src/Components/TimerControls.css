@@ -12,11 +12,20 @@
 
 .Table {
     display: table;
-    margin: 0 auto;
+    margin-left: 0px;
 }
 ul#horizontal-list {
     text-align: center; 
 }
 ul#horizontal-list li {
     display:inline-block;
+}
+
+.StartButton {
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+
+.GiveUp {
+    margin-left: 40px;
 }
