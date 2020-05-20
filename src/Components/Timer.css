@@ -3,8 +3,13 @@
 }
 @import '/node_modules/antd/dist/antd.css';
 
-/* .ant-progress-circle-wrap,
-.ant-progress-line-wrap {
-  margin-right: 8px;
-  margin-bottom: 5px;
-} */
+.timer {
+  vertical-align: center;
+  margin-left: 100px;
+  padding-top: 30px;
+}
+
+.message {
+  margin-right: 200px;
+  font-size: 30px;
+}

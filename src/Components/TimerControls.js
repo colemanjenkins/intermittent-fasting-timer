@@ -57,7 +57,7 @@ class TimerControls extends React.Component {
                 <div className="Table">
                     <ul id="horizontal-list">
                         <li>
-                            <label>Hours</label><br/>
+                            <label>Hours</label><br />
                             <InputNumber
                                 min={0}
                                 max={99}
@@ -67,7 +67,7 @@ class TimerControls extends React.Component {
                             />
                         </li>
                         <li>
-                            <label>Mins</label><br/>
+                            <label>Mins</label><br />
                             <InputNumber
                                 min={0}
                                 max={59}
@@ -77,7 +77,7 @@ class TimerControls extends React.Component {
                             />
                         </li>
                         <li>
-                            <label>Secs</label><br/>
+                            <label>Secs</label><br />
                             <InputNumber
                                 min={0}
                                 max={59}
@@ -93,12 +93,12 @@ class TimerControls extends React.Component {
                     <div className="StartButton">
                         <Button type="submit"
                             onClick={() => this.props.updatePlannedTime(this.calculateTotalTime(this.state))}
-                        type="primary">Start Timer</Button>
+                            type="primary">Start Timer</Button>
                     </div>
                     <div className="GiveUp">
                         <Button type="submit"
                             onClick={() => { this.props.newFailed(); this.props.updatePlannedTime(0) }}
-                        type="primary" danger>I failed :(</Button>
+                            type="primary" danger>I failed :(</Button>
                     </div>
                 </div>
 
