@@ -253,8 +253,8 @@ class App extends Component {
 
   render() {
     return (
-      
-      <div className="App" onClick={() => this.setState({recycle: false})}>
+
+      <div className="App" onClick={() => this.setState({ recycle: false })}>
         {/* <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1> */}
         <div className="grid">
           <Header />
@@ -264,7 +264,7 @@ class App extends Component {
               className="confetti"
             />
           }
-          
+
           <TimerControls
             updatePlannedTime={this.updatePlannedTime}
             newFailed={this.newFailed} />
@@ -280,13 +280,13 @@ class App extends Component {
             editNote={this.editNote}
             removeFast={this.removeFast}
           />
-          
+
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
           {/* <Resources /> */}
           <Footer />
-          
+
         </div>
 
       </div>

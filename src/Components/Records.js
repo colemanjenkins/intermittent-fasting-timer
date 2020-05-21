@@ -70,7 +70,7 @@ class Records extends Component {
             );
         }
         return (
-            <div className="records">
+            <div className="noRecords">
                 <h2>Records</h2>
                 <p>No Records yet!</p>
             </div>
