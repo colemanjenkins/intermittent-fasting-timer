@@ -1,0 +1,7 @@
+.resources {
+    grid-area: resources;
+}
+
+.list {
+    list-style: none;
+}

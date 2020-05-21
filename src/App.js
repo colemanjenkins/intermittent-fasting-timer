@@ -3,6 +3,7 @@ import { PageHeader } from 'antd';
 
 import './App.css';
 import Timer from './Components/Timer.js';
+import Resources from './Components/Resources.js'
 import History from './Components/History.js';
 import Records from './Components/Records.js';
 import TimerControls from './Components/TimerControls.js';
@@ -146,6 +147,7 @@ class App extends Component {
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
+          <Resources />
         </div>
 
       </div>
