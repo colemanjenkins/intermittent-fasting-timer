@@ -6,7 +6,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 
 class HistoryBody extends Component {
     constructor(props) {
@@ -146,7 +146,13 @@ class HistoryBody extends Component {
                                                         autoSize={{ maxRows: 3 }}
                                                     /></li>
                                             </div>
-                                            {/* } */}
+                                            <div id="removeButton">
+                                                <Button
+                                                    type='submit'
+                                                    onClick={(e) => this.props.removeFast(fast.id)}
+                                                > Remove fast
+                                                </Button>
+                                            </div>
                                         </div>
                                     </Typography>
                                 </ExpansionPanelDetails>
