@@ -2,7 +2,10 @@
   grid-area: history;
   margin-bottom: 0px;
   height: 100%;
-  padding-bottom: 20px
+  padding-bottom: 60px;
+  background-color: lightgray;
+  padding-top: 20px;
+  margin-top: 10px;
 }
 
 .history {

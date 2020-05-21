@@ -1,6 +1,5 @@
 
 body {
-  background: url("https://cdn.hipwallpaper.com/i/44/92/DjoFAH.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -27,8 +26,4 @@ body {
                        "controls timer resources"
                        "history history history"
                        /* "footer footer footer"; */
-}
-
-.App{
-  /* margin-top: 30px; */
 }

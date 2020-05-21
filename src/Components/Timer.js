@@ -88,12 +88,11 @@ class Timer extends Component {
 
         return (
             <div className="timer">
-                {/* <h2 style={{ display: "flex", justifyContent: "center"}}>Timer</h2> */}
                 <div className="timerCircle">
                     <Progress type="circle"
                         percent={this.calculatePercent(timerStart, timerLength, stop, now)}
                         format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
-                        width={250}
+                        width={300}
                     />
                     <div className="AltTimer">
                         {this.displaySecondTimer(altStop, timerStart, now)}
@@ -102,8 +101,7 @@ class Timer extends Component {
                         <Message
                             stop={stop}
                             timerLength={timerLength}
-                            timerStart={timerStart} 
-                            style={{ display:"flex", justifyContent: "center"}}
+                            timerStart={timerStart}
                         />
                     </div>
                 </div>

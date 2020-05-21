@@ -2,6 +2,15 @@
   grid-area: rightUpper;
   width: 325px;
   font-size: 17px;
-  padding-top: 20px;
+  margin: 22px 30px 30px 100px;
 }
+
+.noRecords {
+   grid-area: rightUpper;
+   width: 325px;
+   font-size: 17px;
+   margin: 22px 30px 30px 100px;
+}
+
+
 

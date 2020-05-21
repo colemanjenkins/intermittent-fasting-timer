@@ -90,7 +90,7 @@ class HistoryBody extends Component {
     render() {
 
         return (
-            <div className="historyBody" style={{ display: "flex", flexWrap: "wrap" }}>
+            <div className="historyBody" >
 
                 {this.props.fasts.map(fast => {
                     let startShort = this.timeStamp(fast.startDate, false)
@@ -108,8 +108,8 @@ class HistoryBody extends Component {
                     let actualSeconds = actualTimes[2];
 
                     return (
-                        <div className="card">
-                            <ExpansionPanel>
+                        <div className="panel">
+                            <ExpansionPanel  >
                                 <ExpansionPanelSummary
                                     expandIcon={<ExpandMoreIcon />}
                                     aria-controls="panel1a-content"
@@ -128,10 +128,9 @@ class HistoryBody extends Component {
                                         </div>
                                     </Typography>
                                 </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
+                                <ExpansionPanelDetails className="panel">
                                     <Typography>
                                         <div className="moreInfo">
-                                            {/* {this.state.showFastID.includes(fast.id) && */}
                                             <div className="expandedView" id="historyCard">
                                                 <li><p className="infoLabel">Start: </p>{startLong}</li>
                                                 <li><p className="infoLabel">End: </p>{endLong}</li>

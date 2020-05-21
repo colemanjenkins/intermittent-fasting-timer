@@ -26,13 +26,17 @@ You have 13 H1 headings. You may want to use the "H1 -> H2" option to demote all
 
 ----->
 
-![alt_text](images/Intermittent-Fasting0.png "image_tooltip")
-![alt_text](images/Intermittent-Fasting1.png "image_tooltip")
+<!-- ![alt_text](images/Intermittent-Fasting0.png "image_tooltip")
+![alt_text](images/Intermittent-Fasting1.png "image_tooltip") -->
 
 
 
 # Intermittent Fasting Timer
 
+## Check out the live app here!
+https://intermittent-fasting-tracker.netlify.app/
+
+## Project Proposal
 
 Convenient timer to track fasting progress
 
@@ -52,7 +56,7 @@ Convenient timer to track fasting progress
                         Annie Sharkey, Camille Cooper
 
 
-# Team Introduction
+## Team Introduction
 
 
 
@@ -68,7 +72,7 @@ In order to pursue these desires further in the future, Coleman is planning to m
 Table of Contents
 
 
-# Introduction
+## Introduction
 
 
 Intermittent fasting is a health technique individuals may use to manage how they’re consuming food, leading to both mental and physical benefits. During intermittent fasting, individuals set aside an amount of time each day where they cannot eat. The purpose of the Intermittent Fasting Timer is to allow individuals to easily keep track of their fasts, both current and in the past. 
@@ -79,7 +83,7 @@ To keep track of past fasts, users may refer to their history, where a list of e
 
 
 
-# Key definitions
+## Key definitions
 
 
 
@@ -132,7 +136,7 @@ To keep track of past fasts, users may refer to their history, where a list of e
 
 
 
-# Technologies to be implemented
+## Technologies to be implemented
 
 
 
@@ -144,12 +148,12 @@ React.js - React is a Javascript library created by Facebook that efficiently bu
 Git and Github - Github is a software development platform that allows for source control as developers share and work on code.
 
 
-# Project requirements
+## Project requirements
 
 
 
 
-## Fasting Timer
+### Fasting Timer
 
 The user will be able to select the length of time they would like to fast. For example, if they are doing a 16:8 fast, the fast length they would choose would be 16 hours. This can be of a specific (typical) length, like 16 hours or 18 hours, but may also be customized to any length (specifically to the seconds level). 
 
@@ -160,12 +164,12 @@ Once the timer has been stopped or once the timer reaches 0:00:00, the fast is m
 The numbers on the timer will be green as long as the timer is counting down and will remain green if the timer reaches 0:00:00. The numbers will turn red if the user stops the timer before it reaches 0:00:00. Once the timer reaches 0:00:00 it will be reset to the length of fasting, for example, 16:00:00.
 
 
-## Timer Controls
+### Timer Controls
 
 The user can interact with the timer via the timer controls. These include one icon showing the type of fast (e.g., 16:8 vs. custom 5:5) and two buttons: start and stop. The start button allows the user to manually start the timer once the time has been set (as determined by selecting a template fast or creating a custom fast), and the stop timer allows the user to stop the timer before it hits 0:00:00, thus indicating that they have broken the fast.
 
 
-## History Section
+### History Section
 
 The user can see all of their previous fasts in a list. Each item in the list shows:
 
@@ -176,22 +180,22 @@ The user can see all of their previous fasts in a list. Each item in the list sh
 *   The result of the fast: this will show whether the user completed their fast successfully or gave up before the timer stopped.
 
 
-## Records
+### Records
 
 The user can see the lengths of their longest and shortest fasts; the longest and shortest fasts are determined only from the set of fasts that the user has completed (meaning that a fast that is currently being timed is not considered), though these fasts do not have to have been completed successfully. The user can also see the percentage of all fasts that they have completed successfully out of all the fasts they have completed.
 
 
-## Time Since Last Fast
+### Time Since Last Fast
 
 The user can see the number of hours that has passed since they have completed their last fast in an icon below the timer.
 
 
-## Incentivizing Messages
+### Incentivizing Messages
 
 The user can see messages displayed near the timer that tell them positive messages and encourage them to continue the fast. The messages change automatically every hour.
 
 
-## Stretch Goals
+### Stretch Goals
 
 The user will experience the following within the application:
 
@@ -204,7 +208,7 @@ The user will experience the following within the application:
 
 
 
-# Project timeline
+## Project timeline
 
 
 

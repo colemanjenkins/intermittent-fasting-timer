@@ -35,25 +35,11 @@ class Message extends Component {
         let newNum = num;
         let goal = this.state.percentGoal;
         let changeMessage = true;
-
-        // if (goal === 90 && percent <= 10) {
-        //     changeMessage = false;
-        // }
-
         if (percent < goal && changeMessage && percent !== 0 && percent !== 100 && timerLength >= 10000) {
             newNum = Math.floor(Math.random() * this.state.messages.length);
             while (newNum === num) {
                 newNum = Math.floor(Math.random() * this.state.messages.length);
             }
-        //    console.log(goal)
-        //     if (goal - 10 === 10) {
-        //         console.log("happened");
-        //         goal = 90;
-        //     } else {
-        //         goal -= 10;
-        //     }
-
-
             this.setState({
                 percentGoal: goal - 10,
                 messageID: newNum
@@ -62,10 +48,11 @@ class Message extends Component {
     }
 
     shouldComponentUpdate(nextState) {
-        return this.state.percentGoal !== nextState.percentGoal }
+        return this.state.percentGoal !== nextState.percentGoal
+    }
 
     componentDidUpdate() {
-        if (this.state.percentGoal === 0 && 
+        if (this.state.percentGoal === 0 &&
             this.calculatePercent(this.props.timerStart, this.props.timerLength, this.props.stop) === 100) {
             this.setState({
                 percentGoal: 90,
@@ -82,14 +69,9 @@ class Message extends Component {
         let percent = this.calculatePercent(timerStart, timerLength, stop);
 
         this.handleMsg(percent, this.state.messageID, stop, timerLength);
-        // console.log("percent: " + percent + " percentGoal: " + this.state.percentGoal);
-        // if (percent === 0) {
-        //     console.log("percentGoal: " + this.state.percentGoal);
-        // }
 
         return (
-            <div className="timer" style={{ verticalAlign: "center" }}>
-                <br /><br />
+            <div className="timer">
                 <div style={{ display: "flex", justifyContent: "center" }}>{this.state.messages[this.state.messageID]}</div>
             </div>
         );
