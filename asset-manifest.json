@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/intermittent-fasting-tracker/static/css/main.31349302.chunk.css",
+    "main.js": "/intermittent-fasting-tracker/static/js/main.c780d49a.chunk.js",
+    "main.js.map": "/intermittent-fasting-tracker/static/js/main.c780d49a.chunk.js.map",
+    "runtime-main.js": "/intermittent-fasting-tracker/static/js/runtime-main.807efef9.js",
+    "runtime-main.js.map": "/intermittent-fasting-tracker/static/js/runtime-main.807efef9.js.map",
+    "static/css/2.4c6ee7a4.chunk.css": "/intermittent-fasting-tracker/static/css/2.4c6ee7a4.chunk.css",
+    "static/js/2.8b3e2bf2.chunk.js": "/intermittent-fasting-tracker/static/js/2.8b3e2bf2.chunk.js",
+    "static/js/2.8b3e2bf2.chunk.js.map": "/intermittent-fasting-tracker/static/js/2.8b3e2bf2.chunk.js.map",
+    "index.html": "/intermittent-fasting-tracker/index.html",
+    "precache-manifest.14922999f11ee51a39ca75234e73f365.js": "/intermittent-fasting-tracker/precache-manifest.14922999f11ee51a39ca75234e73f365.js",
+    "service-worker.js": "/intermittent-fasting-tracker/service-worker.js",
+    "static/css/2.4c6ee7a4.chunk.css.map": "/intermittent-fasting-tracker/static/css/2.4c6ee7a4.chunk.css.map",
+    "static/css/main.31349302.chunk.css.map": "/intermittent-fasting-tracker/static/css/main.31349302.chunk.css.map",
+    "static/js/2.8b3e2bf2.chunk.js.LICENSE.txt": "/intermittent-fasting-tracker/static/js/2.8b3e2bf2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.807efef9.js",
+    "static/css/2.4c6ee7a4.chunk.css",
+    "static/js/2.8b3e2bf2.chunk.js",
+    "static/css/main.31349302.chunk.css",
+    "static/js/main.c780d49a.chunk.js"
+  ]
+}
