@@ -9,14 +9,17 @@
 
 .timerCircle {
   font-size: 25px;
+  vertical-align: center;
 }
 
 .AltTimer {
   text-align: center;
   height: 40px;
+  margin-top: 10px;
 }
 
-.message {
+.Message {
   font-size: 25px;
+  max-width: 300px;
 }
 
