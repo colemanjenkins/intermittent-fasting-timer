@@ -33,7 +33,7 @@ class History extends Component {
                     }
                     
                 </div>
-            {/* <Footer/> */}
+            <Footer/>
             </div>
         );
     }

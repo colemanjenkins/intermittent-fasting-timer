@@ -11,7 +11,7 @@ body {
 }
 
 .confetti {
-  /* width: 1250px; */
+  width: 1250px;
   grid-area: confetti;
 }
 

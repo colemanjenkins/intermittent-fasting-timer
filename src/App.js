@@ -98,7 +98,7 @@ class App extends Component {
       currentTime: Date.now(),
       stop: true,
       altStop: true,
-      confetti: true,
+      confetti: false,
       recycle: true,
       stopTime: 0,
     }
@@ -296,7 +296,7 @@ class App extends Component {
           editNote={this.editNote}
           removeFast={this.removeFast}
         />
-        <Footer />
+        {/* <Footer /> */}
 
       </div>
     );
