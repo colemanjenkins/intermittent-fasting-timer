@@ -103,6 +103,7 @@ class App extends Component {
     this.newFailed = this.newFailed.bind(this);
     this.parseTime = this.parseTime.bind(this);
     this.editNote = this.editNote.bind(this);
+    this.removeFast = this.removeFast.bind(this);
   }
 
   componentDidMount() {
@@ -216,6 +217,13 @@ class App extends Component {
     })
   }
 
+  removeFast(key) {
+    const list = this.state.fasts.filter(fast => fast.id !== key)
+    this.setState({
+      fasts: list
+    })
+  }
+
   stopRecycle = () => {
     this.setState({
       recycle: false
@@ -255,7 +263,9 @@ class App extends Component {
           <History
             fasts={this.state.fasts}
             parseTime={this.parseTime}
-            editNote={this.editNote} />
+            editNote={this.editNote}
+            removeFast={this.removeFast}
+          />
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />

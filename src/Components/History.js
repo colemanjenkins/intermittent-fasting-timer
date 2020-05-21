@@ -26,6 +26,7 @@ class History extends Component {
                         fasts={this.props.fasts}
                         parseTime={this.props.parseTime}
                         editNote={this.props.editNote}
+                        removeFast={this.props.removeFast}
                     />
                 }
             </div>
