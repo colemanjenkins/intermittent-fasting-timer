@@ -13,13 +13,30 @@ import Confetti from 'react-confetti';
 const failedFastsMessages = [
   'Some room for improvement!',
   'You got this next time!',
-  'Failure is an inevitable part of success!'
+  'Failure is an inevitable part of success!',
+  'Practice makes permanent!',
+  'If you sleep, you will not feel hungry ;) ',
+  'Why eat when you can develop a timer app',
+  'Better luck next time!',
+  'Hunger is just a need',
+  "There's always next time!",
+  'Oof',
+  "Nobody's perfect!"
 ];
 
 const successFastsMessages = [
   'Good job!',
   'Health guru!',
-  'Nice!'
+  'Nice!',
+  'You did great!',
+  'The journey? Easy.',
+  'Keep it up!',
+  'Why stop here?',
+  'Food is just materialistic want anyways',
+  "Food? That's so 2019",
+  'Determination is my food',
+  'gg wp',
+  "You're perfect"
 ];
 
 class App extends Component {
@@ -214,7 +231,7 @@ class App extends Component {
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
-          
+
         </div>
         <History
           fasts={this.state.fasts}

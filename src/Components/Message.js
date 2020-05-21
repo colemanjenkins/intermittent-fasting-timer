@@ -11,11 +11,18 @@ class Message extends Component {
                 'You got this!',
                 'WILLPOWER!!',
                 'What is hunger anyways?',
+                'Keep it up!',
+                'gl hf',
+                'YOU CAN DO THIS',
+                "You're not hungry",
+                "Stop thinking about your mom's mac n cheese",
+                "Don't do it",
+                'I am watching you',
+                'Just think how disappointed I will be',
             ],
             oldMessageID: 0,
             messageID: 0,
             percentGoal: 90,
-
         }
 
         this.handleMsg = this.handleMsg.bind(this);
