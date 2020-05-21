@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './App.css';
 import Timer from './Components/Timer.js';
-import Resources from './Components/Resources.js'
 import History from './Components/History.js';
 import Records from './Components/Records.js';
 import TimerControls from './Components/TimerControls.js';
@@ -10,8 +9,6 @@ import Footer from './Components/Footer.js';
 import Header from './Components/Header.js'
 import './Components/TimerControls.css';
 import Confetti from 'react-confetti';
-import windowSize from 'react-window-size';
-// import useWindowSize from 'react-use/lib/useWindowSize';
 
 const failedFastsMessages = [
   'Some room for improvement!',
@@ -31,68 +28,7 @@ class App extends Component {
     super(props)
     this.state = {
 
-      fasts: [
-        // {
-        //   startDate: 1589836641396,
-        //   endDate: 1589836650000,
-        //   actualTime: 9000,
-        //   plannedTime: 9000,
-        //   passed: true,
-        //   status: 'Good job!',
-        //   id: 0,
-        //   note: '',
-        // },
-        // {
-        //   startDate: 1289836641396,
-        //   endDate: 1289836680000,
-        //   actualTime: 20000,
-        //   plannedTime: 39000,
-        //   passed: false,
-        //   status: 'Some room for improvement!',
-        //   id: 1,
-        //   note: '',
-        // },
-        // {
-        //   startDate: 1589836641396,
-        //   endDate: 1589836650000,
-        //   actualTime: 9000,
-        //   plannedTime: 9000,
-        //   passed: true,
-        //   status: 'Good job!',
-        //   id: 0,
-        //   note: '',
-        // },
-        // {
-        //   startDate: 1289836641396,
-        //   endDate: 1289836680000,
-        //   actualTime: 20000,
-        //   plannedTime: 39000,
-        //   passed: false,
-        //   status: 'Some room for improvement!',
-        //   id: 1,
-        //   note: '',
-        // },
-        // {
-        //   startDate: 1589836641396,
-        //   endDate: 1589836650000,
-        //   actualTime: 9000,
-        //   plannedTime: 9000,
-        //   passed: true,
-        //   status: 'Good job!',
-        //   id: 0,
-        //   note: '',
-        // },
-        // {
-        //   startDate: 1289836641396,
-        //   endDate: 1289836680000,
-        //   actualTime: 20000,
-        //   plannedTime: 39000,
-        //   passed: false,
-        //   status: 'Some room for improvement!',
-        //   id: 1,
-        //   note: '',
-        // }
-      ],
+      fasts: [],
       timerTime: 18 * 60 * 60 * 1000,
       timerStart: 0,
       currentTime: Date.now(),
@@ -123,9 +59,6 @@ class App extends Component {
     if (!this.state.altStop && (this.state.currentTime - this.state.stopTime >= 3000) && this.state.recycle) {
       this.stopRecycle();
     }
-    // if (!this.state.stop && !this.state.confetti && (this.state.currentTime - this.state.stopTime <= 1000)) {
-    //   this.startConfetti();
-    // }
   }
 
   startConfetti = () => {
@@ -254,21 +187,16 @@ class App extends Component {
   }
 
   render() {
-    // const { Width, Height } = useWindowSize();
     return (
 
       <div className="App" onClick={() => this.setState({ recycle: false })}>
-        {/* <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1> */}
         <div className="grid">
           <Header />
           {this.state.confetti &&
             <Confetti
               recycle={this.state.recycle}
               className="confetti"
-              // width={Width}
-              // height={Height}
               width={this.props.windowWidth}
-              // style={{width: this.props.windowWidth}}
             />
           }
 
@@ -286,8 +214,6 @@ class App extends Component {
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
-          {/* <Resources /> */}
-          {/* <Footer /> */}
           
         </div>
         <History
@@ -296,18 +222,11 @@ class App extends Component {
           editNote={this.editNote}
           removeFast={this.removeFast}
         />
-        {/* <Footer /> */}
 
       </div>
     );
 
   }
 }
-
-// const Confet = (st) => {
-//   return (
-
-//   );
-// }
 
 export default App;

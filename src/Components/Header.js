@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import {
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
-    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
-    } from "mdbreact";
-import { BrowserRouter as Router } from 'react-router-dom';
 import './Header.css';
 import 'react-sticky-header/styles.css';
 import StickyHeader from 'react-sticky-header';
@@ -14,9 +9,9 @@ class Header extends Component {
             <div className="header">
                 <StickyHeader
                     header={
-                    <div className="Header_root">
-                        <h1 className="Header_title" style={{ display: "flex", justifyContent: "center"}}>Intermittent Fasting Tracker</h1>
-                    </div>
+                        <div className="Header_root">
+                            <h1 className="Header_title" style={{ display: "flex", justifyContent: "center" }}>Intermittent Fasting Tracker</h1>
+                        </div>
                     }
                     className="sticky"
                 >
