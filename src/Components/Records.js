@@ -17,6 +17,7 @@ class Records extends Component {
                 time = fasts[i].actualTime
             }
         }
+        return time;
     }
     findShortestFast(fasts) {
         var time = fasts[0].actualTime;

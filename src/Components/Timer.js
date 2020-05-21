@@ -92,7 +92,7 @@ class Timer extends Component {
                         format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
                         width={300}
                     />
-                    <div className="AltTimer">
+                    <div className="altTimer">
                         {this.displaySecondTimer(altStop, timerStart, now)}
                     </div>
                     <div className="Message">
