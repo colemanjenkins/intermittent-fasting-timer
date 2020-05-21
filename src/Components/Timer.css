@@ -4,27 +4,24 @@
 @import '/node_modules/antd/dist/antd.css';
 
 .timer {
-  /* vertical-align: center; */
-  padding-top: 20px;
-  /* margin-left: 0px; */
+  vertical-align: center;
+  padding-top: 30px;
 }
 
 .message {
-  /* margin-right: 300px; */
+  margin-right: 300px;
   font-size: 30px;
-  /* vertical-align: center; */
 }
 
 .timerCircle {
-  margin-left: 25px;
+  margin-left: 100px;
   font-size: 25px;
 }
 
 .AltTimer {
-  /* margin-right: 20px; */
+  margin-right: 20px;
 }
 
 .Message {
-  margin-right: 150px;
+  margin-right: 200px;
 }
-

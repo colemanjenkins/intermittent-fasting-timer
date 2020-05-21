@@ -144,7 +144,8 @@ class HistoryBody extends Component {
                                                         value={fast.note}
                                                         onChange={(e) => this.props.editNote(e.target.value, fast.id)}
                                                         autoSize={{ maxRows: 3 }}
-                                                    /></li>
+                                                    />
+                                                </li>
                                             </div>
                                             <div id="removeButton">
                                                 <Button

@@ -9,7 +9,9 @@ import TimerControls from './Components/TimerControls.js';
 import Footer from './Components/Footer.js';
 import Header from './Components/Header.js'
 import './Components/TimerControls.css';
-import Confetti from 'react-confetti'
+import Confetti from 'react-confetti';
+import windowSize from 'react-window-size';
+// import useWindowSize from 'react-use/lib/useWindowSize';
 
 const failedFastsMessages = [
   'Some room for improvement!',
@@ -96,7 +98,7 @@ class App extends Component {
       currentTime: Date.now(),
       stop: true,
       altStop: true,
-      confetti: false,
+      confetti: true,
       recycle: true,
       stopTime: 0,
     }
@@ -252,6 +254,7 @@ class App extends Component {
   }
 
   render() {
+    // const { Width, Height } = useWindowSize();
     return (
       
       <div className="App" onClick={() => this.setState({recycle: false})}>
@@ -262,6 +265,10 @@ class App extends Component {
             <Confetti
               recycle={this.state.recycle}
               className="confetti"
+              // width={Width}
+              // height={Height}
+              width={this.props.windowWidth}
+              // style={{width: this.props.windowWidth}}
             />
           }
           
@@ -285,7 +292,7 @@ class App extends Component {
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
           {/* <Resources /> */}
-          <Footer />
+          {/* <Footer /> */}
           
         </div>
 
@@ -294,5 +301,11 @@ class App extends Component {
 
   }
 }
+
+// const Confet = (st) => {
+//   return (
+
+//   );
+// }
 
 export default App;

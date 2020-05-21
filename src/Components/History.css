@@ -1,4 +1,11 @@
+.pageBottom {
+  grid-area: history;
+  margin-bottom: 0px;
+  height: 100%;
+  padding-bottom: 20px
+}
+
 .history {
   margin-left: 20px;
-  grid-area: history;
+  margin-bottom: 150px;
 }
