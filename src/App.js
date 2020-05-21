@@ -281,12 +281,7 @@ class App extends Component {
             timerStart={this.state.timerStart}
             now={this.state.currentTime}
             confetti={this.state.confetti} />
-          <History
-            fasts={this.state.fasts}
-            parseTime={this.parseTime}
-            editNote={this.editNote}
-            removeFast={this.removeFast}
-          />
+
 
           <Records
             fasts={this.state.fasts}
@@ -295,6 +290,13 @@ class App extends Component {
           {/* <Footer /> */}
           
         </div>
+        <History
+          fasts={this.state.fasts}
+          parseTime={this.parseTime}
+          editNote={this.editNote}
+          removeFast={this.removeFast}
+        />
+        <Footer />
 
       </div>
     );
