@@ -121,9 +121,9 @@ class App extends Component {
     if (!this.state.altStop && (this.state.currentTime - this.state.stopTime >= 3000) && this.state.recycle) {
       this.stopRecycle();
     }
-    if (!this.state.stop && !this.state.confetti) {
-      this.startConfetti();
-    }
+    // if (!this.state.stop && !this.state.confetti && (this.state.currentTime - this.state.stopTime <= 1000)) {
+    //   this.startConfetti();
+    // }
   }
 
   startConfetti = () => {
@@ -257,13 +257,14 @@ class App extends Component {
       <div className="App" onClick={() => this.setState({recycle: false})}>
         {/* <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1> */}
         <div className="grid">
+          <Header />
           {this.state.confetti &&
             <Confetti
               recycle={this.state.recycle}
               className="confetti"
             />
           }
-          <Header />
+          
           <TimerControls
             updatePlannedTime={this.updatePlannedTime}
             newFailed={this.newFailed} />
