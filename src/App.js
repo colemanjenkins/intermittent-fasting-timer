@@ -7,6 +7,8 @@ import Resources from './Components/Resources.js'
 import History from './Components/History.js';
 import Records from './Components/Records.js';
 import TimerControls from './Components/TimerControls.js';
+import Footer from './Components/Footer.js';
+import Header from './Components/Header.js'
 import './Components/TimerControls.css';
 import Confetti from 'react-confetti'
 
@@ -154,13 +156,14 @@ class App extends Component {
     return (
       
       <div className="App" onClick={() => this.setState({recycle: false})}>
-        <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
+        {/* <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1> */}
         <div className="grid">
           {this.state.confetti &&
             <Confetti
             recycle={this.state.recycle}
             />
           }
+          <Header />
           <TimerControls
             updatePlannedTime={this.updatePlannedTime}
             newFailed={this.newFailed} />
@@ -173,10 +176,12 @@ class App extends Component {
           <History
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
+          <Footer />
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
-          <Resources />
+          {/* <Resources /> */}
+          
         </div>
 
       </div>

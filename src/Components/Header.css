@@ -1,0 +1,14 @@
+.header {
+    grid-area: header;
+    /* padding: 10px;
+    background-color: lightblue; */
+    /* background: brown; */
+    margin-bottom: 0px;
+    height: 75px;
+}
+
+.Header_title {
+    padding: 20px;
+    background-color: rgba(28, 132, 230, 0.973);
+    color: white
+}

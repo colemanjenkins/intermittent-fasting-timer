@@ -7,10 +7,11 @@
   display: grid;
   height: 1000px;
   grid-template: 250px 250px 250px 250px / 1fr 1fr 1fr;
-  grid-template-areas: "controls timer rightUpper"
+  grid-template-areas: "header header header"
+                       "controls timer rightUpper"
                        "controls timer resources"
                        "history history history"
-                       "history history history";
+                       "footer footer footer";
 }
 
 .App{
