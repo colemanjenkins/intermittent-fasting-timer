@@ -132,8 +132,8 @@ class HistoryBody extends Component {
                                                 <li><p className="infoLabel">Actual Time: </p>{actualHours} h, {actualMinutes} m, {actualSeconds} s </li>
                                                 <li><p className="infoLabel">Status: </p>{fast.status}</li>
                                             </div>
-                                        {/* } */}
-                                    </div>
+                                            {/* } */}
+                                        </div>
                                     </Typography>
                                 </ExpansionPanelDetails>
                             </ExpansionPanel>
