@@ -3,22 +3,19 @@
     display: grids;
     grid: 150px / auto auto auto auto;
     margin: 0 auto;
-    /* justify-content: left; */
+    padding-top: 20px;
     grid-area: controls;
+    min-width: 400px;
 }
 
 .InputLabels {
     display: flex;
-    /* justify-content: left; */
 }
 
 .Table {
     display: table;
     margin-left: 0px;
-}
-
-b {
-    width: 50px;
+    /* width: 400px; */
 }
 
 ul#horizontal-list li {
@@ -48,6 +45,7 @@ ul#horizontal-list li {
     margin-top: 10px;
 }
 
-/* .buttons {
-    justify-content: left;
-} */
+label {
+    font-size: 15px;
+    font-weight: bold;
+}

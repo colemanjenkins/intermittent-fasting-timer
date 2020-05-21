@@ -5,10 +5,13 @@
     /* background: brown; */
     margin-bottom: 0px;
     height: 75px;
+    margin-right: 0px;
+    /* width: 200px; */
 }
 
 .Header_title {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: rgba(28, 132, 230, 0.973);
     color: white
 }

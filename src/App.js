@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { PageHeader } from 'antd';
 
 import './App.css';
 import Timer from './Components/Timer.js';
@@ -29,7 +28,69 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fasts: [],
+
+      fasts: [
+        // {
+        //   startDate: 1589836641396,
+        //   endDate: 1589836650000,
+        //   actualTime: 9000,
+        //   plannedTime: 9000,
+        //   passed: true,
+        //   status: 'Good job!',
+        //   id: 0,
+        //   note: '',
+        // },
+        // {
+        //   startDate: 1289836641396,
+        //   endDate: 1289836680000,
+        //   actualTime: 20000,
+        //   plannedTime: 39000,
+        //   passed: false,
+        //   status: 'Some room for improvement!',
+        //   id: 1,
+        //   note: '',
+        // },
+        // {
+        //   startDate: 1589836641396,
+        //   endDate: 1589836650000,
+        //   actualTime: 9000,
+        //   plannedTime: 9000,
+        //   passed: true,
+        //   status: 'Good job!',
+        //   id: 0,
+        //   note: '',
+        // },
+        // {
+        //   startDate: 1289836641396,
+        //   endDate: 1289836680000,
+        //   actualTime: 20000,
+        //   plannedTime: 39000,
+        //   passed: false,
+        //   status: 'Some room for improvement!',
+        //   id: 1,
+        //   note: '',
+        // },
+        // {
+        //   startDate: 1589836641396,
+        //   endDate: 1589836650000,
+        //   actualTime: 9000,
+        //   plannedTime: 9000,
+        //   passed: true,
+        //   status: 'Good job!',
+        //   id: 0,
+        //   note: '',
+        // },
+        // {
+        //   startDate: 1289836641396,
+        //   endDate: 1289836680000,
+        //   actualTime: 20000,
+        //   plannedTime: 39000,
+        //   passed: false,
+        //   status: 'Some room for improvement!',
+        //   id: 1,
+        //   note: '',
+        // }
+      ],
       timerTime: 18 * 60 * 60 * 1000,
       timerStart: 0,
       currentTime: Date.now(),
@@ -39,6 +100,12 @@ class App extends Component {
       recycle: true,
       stopTime: 0,
     }
+    this.updatePlannedTime = this.updatePlannedTime.bind(this);
+    this.newSuccess = this.newSuccess.bind(this);
+    this.newFailed = this.newFailed.bind(this);
+    this.parseTime = this.parseTime.bind(this);
+    this.editNote = this.editNote.bind(this);
+    this.removeFast = this.removeFast.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +121,15 @@ class App extends Component {
     if (!this.state.altStop && (this.state.currentTime - this.state.stopTime >= 3000) && this.state.recycle) {
       this.stopRecycle();
     }
+    if (!this.state.stop && !this.state.confetti) {
+      this.startConfetti();
+    }
+  }
+
+  startConfetti = () => {
+    this.setState({
+      confetti: true
+    })
   }
 
   componentWillUnmount() {
@@ -87,8 +163,10 @@ class App extends Component {
       passed: true,
       id: newID,
       status: successFastsMessages[Math.floor(Math.random() * successFastsMessages.length)],
-    };
-    const newFastList = [...this.state.fasts, successFast];
+      note: '',
+    }
+    const newFastList = [...this.state.fasts, successFast]
+    console.log(this.state.timerTime)
     this.setState(prevState => ({
       fasts: newFastList,
       timerStart: prevState.currentTime,
@@ -113,8 +191,10 @@ class App extends Component {
         passed: false,
         id: newID,
         status: failedFastsMessages[Math.floor(Math.random() * failedFastsMessages.length)],
-      };
-      const newFastList = [...this.state.fasts, failedFast];
+        note: '',
+      }
+      const newFastList = [...this.state.fasts, failedFast]
+      console.log(this.state.timerTime)
       this.setState(prevState => ({
         fasts: newFastList,
         timerStart: prevState.currentTime,
@@ -136,6 +216,25 @@ class App extends Component {
     return [hours, minutes, seconds];
   }
 
+  editNote(newText, key) {
+    const list = this.state.fasts
+    list.map(fast => {
+      if (fast.id === key) {
+        fast.note = newText
+      }
+    });
+    this.setState({
+      fasts: list
+    })
+  }
+
+  removeFast(key) {
+    const list = this.state.fasts.filter(fast => fast.id !== key)
+    this.setState({
+      fasts: list
+    })
+  }
+
   stopRecycle = () => {
     this.setState({
       recycle: false
@@ -144,13 +243,13 @@ class App extends Component {
 
   calculatePercent = (timerStart, timerLength, stop) => {
     if (stop)
-        return 100;
+      return 100;
     let diff = Date.now() - timerStart;
     let pct = 100 - 100 * (diff / timerLength);
     if (pct < 0)
-        return 0;
+      return 0;
     return pct;
-}
+  }
 
   render() {
     return (
@@ -160,7 +259,8 @@ class App extends Component {
         <div className="grid">
           {this.state.confetti &&
             <Confetti
-            recycle={this.state.recycle}
+              recycle={this.state.recycle}
+              className="confetti"
             />
           }
           <Header />
@@ -171,22 +271,26 @@ class App extends Component {
             altStop={this.state.altStop}
             timerLength={this.state.timerTime}
             timerStart={this.state.timerStart}
-            now={this.state.currentTime} 
-            confetti={this.state.confetti}/>
+            now={this.state.currentTime}
+            confetti={this.state.confetti} />
           <History
             fasts={this.state.fasts}
-            parseTime={this.parseTime} />
-          <Footer />
+            parseTime={this.parseTime}
+            editNote={this.editNote}
+            removeFast={this.removeFast}
+          />
+          
           <Records
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
           {/* <Resources /> */}
+          <Footer />
           
         </div>
 
       </div>
     );
-    
+
   }
 }
 

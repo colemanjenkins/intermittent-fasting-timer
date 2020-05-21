@@ -4,6 +4,12 @@ import { isEmpty } from "lodash";
 import HistoryBody from './HistoryBody.js';
 
 class History extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            note: ''
+        }
+    }
 
     render() {
         return (
@@ -16,9 +22,11 @@ class History extends Component {
                 }
 
                 {!isEmpty(this.props.fasts) &&
-                    <HistoryBody 
+                    <HistoryBody
                         fasts={this.props.fasts}
                         parseTime={this.props.parseTime}
+                        editNote={this.props.editNote}
+                        removeFast={this.props.removeFast}
                     />
                 }
             </div>

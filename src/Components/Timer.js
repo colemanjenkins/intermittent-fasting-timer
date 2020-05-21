@@ -72,9 +72,6 @@ class Timer extends Component {
             let retString = hours + ":" + min;
             if (min < 10)
                 retString = hours + ":0" + min;
-            let hr = "hours";
-            if (hours === 1)
-                hr = "hour";
             return "Time since last fast - " + retString;
         }
         return '';
@@ -88,22 +85,27 @@ class Timer extends Component {
             timerStart,
             now
         } = this.props;
-        
+
         return (
-            <div className="timer" style={{ verticalAlign: "center" }}>
-
-                <Progress type="circle"
-                    percent={this.calculatePercent(timerStart, timerLength, stop, now)}
-                    format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
-                    width={200}
-                    style={{ marginLeft: 100 }}
-                />
-                <div>
-                    {this.displaySecondTimer(altStop, timerStart, now)}
-                </div>
-
-                <div className="message">
-                    <Message stop={stop} timerLength={timerLength} timerStart={timerStart} confetti={this.props.confetti} />
+            <div className="timer">
+                {/* <h2 style={{ display: "flex", justifyContent: "center"}}>Timer</h2> */}
+                <div className="timerCircle">
+                    <Progress type="circle"
+                        percent={this.calculatePercent(timerStart, timerLength, stop, now)}
+                        format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
+                        width={250}
+                    />
+                    <div className="AltTimer">
+                        {this.displaySecondTimer(altStop, timerStart, now)}
+                    </div>
+                    <div className="Message">
+                        <Message
+                            stop={stop}
+                            timerLength={timerLength}
+                            timerStart={timerStart} 
+                            style={{ display:"flex", justifyContent: "center"}}
+                        />
+                    </div>
                 </div>
             </div>
         );

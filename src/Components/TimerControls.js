@@ -1,6 +1,6 @@
 import React from 'react';
 import './TimerControls.css';
-import { InputNumber, Button, Form, Input, Radio } from 'antd';
+import { InputNumber, Button, Radio } from 'antd';
 
 
 class TimerControls extends React.Component {
@@ -109,7 +109,7 @@ class TimerControls extends React.Component {
         return (
             <div className="Controls">
                 <div className="buttons">
-
+                    <h2 style={{ marginLeft: 40 }}>Set Timer</h2>
                     <div className="StartButton">
                         <Button type="submit"
                             onClick={() => this.props.updatePlannedTime(this.calculateTotalTime(this.state))}

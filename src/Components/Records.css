@@ -1,7 +1,7 @@
 .records {
   grid-area: rightUpper;
+  width: 325px;
+  font-size: 17px;
+  padding-top: 20px;
 }
 
-.records {
-  width: 350px;
-}

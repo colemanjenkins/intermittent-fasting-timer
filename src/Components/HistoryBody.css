@@ -31,7 +31,19 @@
 }
 
 .card {
-    width: 290px;
+    width: 330px;
     margin-right: 20px;
     margin-bottom: 20px;
+}
+
+#historyCard textarea{
+    border: 1;
+    min-height: 115px;  
+    border-radius: 20px;
+}
+
+#removeButton button {
+    margin-top: 5px;
+    border: 1;
+    border-radius: 10px;
 }
