@@ -6,8 +6,6 @@ import Message from './Message.js';
 
 class Timer extends Component {
 
-
-    //gives the difference between timer in the format: "(Hours):(Minutes)"
     getHoursAndMinutes = (timerStart, timerLength, stop, now) => {
         let diff = now - timerStart;
         let timeFull = timerLength - diff;

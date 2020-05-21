@@ -57,7 +57,7 @@ class TimerControls extends React.Component {
                 minutes: 0,
                 seconds: 0
             });
-        } else { //value === "custom"
+        } else {
             this.setState({
                 custom: true
             });
