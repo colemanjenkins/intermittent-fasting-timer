@@ -13,9 +13,12 @@ body {
 .grid {
   display: grid;
   height: 1000px;
-  grid-template: 450px 300px / 1fr 1fr 1fr;
+  /*grid-template: 450px 300px / 1fr 1fr 1fr;*/
+  grid-template: 250px 250px 250px 250px / 1fr 1fr 1fr;
   grid-template-areas: "controls timer rightUpper"
-                        "history history history";
+                       "controls timer resources"
+                       "history history history"
+                       "history history history";
 }
 
 .App{
