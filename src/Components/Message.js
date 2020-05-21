@@ -59,9 +59,7 @@ class Message extends Component {
         return (
             <div className="timer" style={{ verticalAlign: "center" }}>
                 <br /><br />
-                {/* <div>{this.state.messages[num]}</div> */}
                 <div style={{ display: "flex", justifyContent: "center" }}>{this.state.messages[this.state.messageID]}</div>
-                {/* <div>{message}</div> */}
             </div>
         );
     }

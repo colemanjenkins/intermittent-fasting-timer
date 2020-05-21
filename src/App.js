@@ -91,7 +91,8 @@ class App extends Component {
       timerTime: 18 * 60 * 60 * 1000,
       timerStart: 0,
       currentTime: Date.now(),
-      stop: true
+      stop: true,
+      altStop: true
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
     this.newSuccess = this.newSuccess.bind(this);
@@ -125,50 +126,59 @@ class App extends Component {
       this.setState({
         timerTime: msTime,
         timerStart: Date.now(),
-        stop: false
+        stop: false,
+        altStop: true,
       });
     }
   }
 
   newSuccess() {
+    let newID = 0;
+    if (this.state.fasts.length !== 0)
+      newID = this.state.fasts[this.state.fasts.length - 1].id + 1;
     const successFast = {
       startDate: this.state.timerStart,
       endDate: this.state.currentTime,
       actualTime: this.state.timerTime,
       plannedTime: this.state.timerTime,
       passed: true,
-      id: this.state.fasts[this.state.fasts.length - 1].id + 1,
+      id: newID,
       status: successFastsMessages[Math.floor(Math.random() * successFastsMessages.length)],
       note: '',
     }
     const newFastList = [...this.state.fasts, successFast]
     console.log(this.state.timerTime)
-    this.setState({
+    this.setState(prevState => ({
       fasts: newFastList,
-      timerStart: 0,
+      timerStart: prevState.currentTime,
       stop: true,
-    })
+      altStop: false,
+    }));
   }
 
   newFailed() {
     if (!this.state.stop) {
+      let newID = 0;
+      if (this.state.fasts.length !== 0)
+        newID = this.state.fasts[this.state.fasts.length - 1].id + 1;
       const failedFast = {
         startDate: this.state.timerStart,
         endDate: this.state.currentTime,
         actualTime: this.state.currentTime - this.state.timerStart,
         plannedTime: this.state.timerTime,
         passed: false,
-        id: this.state.fasts[this.state.fasts.length - 1].id + 1,
+        id: newID,
         status: failedFastsMessages[Math.floor(Math.random() * failedFastsMessages.length)],
         note: '',
       }
       const newFastList = [...this.state.fasts, failedFast]
       console.log(this.state.timerTime)
-      this.setState({
+      this.setState(prevState => ({
         fasts: newFastList,
-        timerStart: 0,
+        timerStart: prevState.currentTime,
         stop: true,
-      })
+        altStop: false,
+      }));
     }
   }
 
@@ -205,9 +215,9 @@ class App extends Component {
             updatePlannedTime={this.updatePlannedTime}
             newFailed={this.newFailed} />
           <Timer stop={this.state.stop}
+            altStop={this.state.altStop}
             timerLength={this.state.timerTime}
             timerStart={this.state.timerStart}
-            newSuccess={this.newSuccess}
             now={this.state.currentTime} />
           <History
             fasts={this.state.fasts}

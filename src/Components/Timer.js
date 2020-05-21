@@ -58,31 +58,52 @@ class Timer extends Component {
         return pct;
     }
 
+    displaySecondTimer = (altStop, timerStart, now) => {
+        if (!altStop) {
+            let timeFull = now - timerStart;
+            let msInHour = 3600000;
+            let msInMinute = 60000;
+            let min = (Math.floor(timeFull / msInMinute)) % 60;
+            let hours = Math.floor(timeFull / msInHour);
+            if (min < 0)
+                min = 0;
+            if (hours < 0)
+                hours = 0;
+            let retString = hours + ":" + min;
+            if (min < 10)
+                retString = hours + ":0" + min;
+            return "Time since last fast - " + retString;
+        }
+        return '';
+    }
+
     render() {
         const {
             stop,
+            altStop,
             timerLength,
             timerStart,
             now
         } = this.props;
 
         return (
-            <div >
-                <div className='timer'>
+            <div className="timer">
+                <div className="timerCircle">
                     <Progress type="circle"
                         percent={this.calculatePercent(timerStart, timerLength, stop, now)}
                         format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
                         width={200}
                     />
+                    <div className="AltTimer">
+                        {this.displaySecondTimer(altStop, timerStart, now)}
+                    </div>
+                    <div className="Message">
+                        <Message
+                            stop={stop}
+                            timerLength={timerLength}
+                            timerStart={timerStart} />
+                    </div>
                 </div>
-                <div className='message'>
-                    <Message
-                        stop={stop}
-                        timerLength={timerLength}
-                        timerStart={timerStart}
-                    />
-                </div>
-
             </div>
         );
     }

@@ -1,20 +1,21 @@
 
 .Controls {
     display: grids;
-    grid: 150px / auto auto auto;
+    grid: 150px / auto auto auto auto;
     margin: 0 auto;
+    padding-top: 20px;
     grid-area: controls;
-    /* background-color: yellow; */
+    min-width: 400px;
 }
 
 .InputLabels {
     display: flex;
-    justify-content: space-evenly;
 }
 
 .Table {
     display: table;
     margin-left: 0px;
+    /* width: 400px; */
 }
 
 ul#horizontal-list li {
@@ -37,4 +38,14 @@ ul#horizontal-list li {
 
 #inputForm input{
     width: 50px;
+}
+
+.select {
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+label {
+    font-size: 15px;
+    font-weight: bold;
 }

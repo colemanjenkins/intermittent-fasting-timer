@@ -69,6 +69,12 @@ class Records extends Component {
                 </div>
             );
         }
+        return (
+            <div className="records">
+                <h2>Records</h2>
+                <p>No Records yet!</p>
+            </div>
+        );
     }
 }
 

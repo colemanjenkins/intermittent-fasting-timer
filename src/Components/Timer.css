@@ -5,11 +5,24 @@
 
 .timer {
   vertical-align: center;
-  margin-left: 100px;
   padding-top: 30px;
 }
 
 .message {
-  margin-right: 200px;
+  margin-right: 300px;
   font-size: 30px;
 }
+
+.timerCircle {
+  margin-left: 100px;
+  font-size: 25px;
+}
+
+.AltTimer {
+  margin-right: 20px;
+}
+
+.Message {
+  margin-right: 200px;
+}
+
