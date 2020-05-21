@@ -88,7 +88,7 @@ class Timer extends Component {
             timerStart,
             now
         } = this.props;
-
+        
         return (
             <div className="timer" style={{ verticalAlign: "center" }}>
 
@@ -103,7 +103,7 @@ class Timer extends Component {
                 </div>
 
                 <div className="message">
-                    <Message stop={stop} timerLength={timerLength} timerStart={timerStart} />
+                    <Message stop={stop} timerLength={timerLength} timerStart={timerStart} confetti={this.props.confetti} />
                 </div>
             </div>
         );

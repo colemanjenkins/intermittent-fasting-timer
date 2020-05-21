@@ -8,6 +8,7 @@ import History from './Components/History.js';
 import Records from './Components/Records.js';
 import TimerControls from './Components/TimerControls.js';
 import './Components/TimerControls.css';
+import Confetti from 'react-confetti'
 
 const failedFastsMessages = [
   'Some room for improvement!',
@@ -31,12 +32,11 @@ class App extends Component {
       timerStart: 0,
       currentTime: Date.now(),
       stop: true,
-      altStop: true
+      altStop: true,
+      confetti: false,
+      recycle: true,
+      stopTime: 0,
     }
-    this.updatePlannedTime = this.updatePlannedTime.bind(this);
-    this.newSuccess = this.newSuccess.bind(this);
-    this.newFailed = this.newFailed.bind(this);
-    this.parseTime = this.parseTime.bind(this);
   }
 
   componentDidMount() {
@@ -49,13 +49,16 @@ class App extends Component {
         && (this.state.timerTime + this.state.timerStart >= this.state.currentTime - 10))) {
       this.newSuccess();
     }
+    if (!this.state.altStop && (this.state.currentTime - this.state.stopTime >= 3000) && this.state.recycle) {
+      this.stopRecycle();
+    }
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
-  updatePlannedTime(msTime) {
+  updatePlannedTime = (msTime) => {
     if (msTime === 0) {
       this.setState({
         stop: true,
@@ -70,7 +73,7 @@ class App extends Component {
     }
   }
 
-  newSuccess() {
+  newSuccess = () => {
     let newID = 0;
     if (this.state.fasts.length !== 0)
       newID = this.state.fasts[this.state.fasts.length - 1].id + 1;
@@ -89,10 +92,13 @@ class App extends Component {
       timerStart: prevState.currentTime,
       stop: true,
       altStop: false,
+      confetti: true,
+      recycle: true,
+      stopTime: Date.now(),
     }));
   }
 
-  newFailed() {
+  newFailed = () => {
     if (!this.state.stop) {
       let newID = 0;
       if (this.state.fasts.length !== 0)
@@ -128,11 +134,33 @@ class App extends Component {
     return [hours, minutes, seconds];
   }
 
+  stopRecycle = () => {
+    this.setState({
+      recycle: false
+    })
+  }
+
+  calculatePercent = (timerStart, timerLength, stop) => {
+    if (stop)
+        return 100;
+    let diff = Date.now() - timerStart;
+    let pct = 100 - 100 * (diff / timerLength);
+    if (pct < 0)
+        return 0;
+    return pct;
+}
+
   render() {
     return (
-      <div className="App">
+      
+      <div className="App" onClick={() => this.setState({recycle: false})}>
         <h1 className="dummyHeader">Intermittent Fasting Tracker!</h1>
         <div className="grid">
+          {this.state.confetti &&
+            <Confetti
+            recycle={this.state.recycle}
+            />
+          }
           <TimerControls
             updatePlannedTime={this.updatePlannedTime}
             newFailed={this.newFailed} />
@@ -140,7 +168,8 @@ class App extends Component {
             altStop={this.state.altStop}
             timerLength={this.state.timerTime}
             timerStart={this.state.timerStart}
-            now={this.state.currentTime} />
+            now={this.state.currentTime} 
+            confetti={this.state.confetti}/>
           <History
             fasts={this.state.fasts}
             parseTime={this.parseTime} />
@@ -152,6 +181,7 @@ class App extends Component {
 
       </div>
     );
+    
   }
 }
 
