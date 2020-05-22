@@ -213,26 +213,25 @@ class App extends Component {
               recycle={this.state.recycle}
               className="confetti"
               width={this.props.windowWidth}
-              style={{flex:1}}
+              style={{ flex: 1 }}
             />
           }
-          <div style={{display: "flex", flexWrap: "wrap", marginTop: 50}}>
-          <TimerControls
-            updatePlannedTime={this.updatePlannedTime}
-            newFailed={this.newFailed} 
-            style={{flex:1}}/>
-          <Timer stop={this.state.stop}
-            altStop={this.state.altStop}
-            timerLength={this.state.timerTime}
-            timerStart={this.state.timerStart}
-            now={this.state.currentTime}
-            confetti={this.state.confetti} 
-            style={{flex:1}}/>
-
-          <Records
-            fasts={this.state.fasts}
-            parseTime={this.parseTime} 
-            style={{flex:1}}/>
+          <div className="top">
+            <TimerControls
+              updatePlannedTime={this.updatePlannedTime}
+              newFailed={this.newFailed}
+              style={{ flex: 1 }} />
+            <Timer stop={this.state.stop}
+              altStop={this.state.altStop}
+              timerLength={this.state.timerTime}
+              timerStart={this.state.timerStart}
+              now={this.state.currentTime}
+              confetti={this.state.confetti}
+              style={{ flex: 1 }} />
+            <Records
+              fasts={this.state.fasts}
+              parseTime={this.parseTime}
+              style={{ flex: 1 }} />
           </div>
 
         </div>

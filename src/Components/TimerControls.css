@@ -1,11 +1,8 @@
 
 .Controls {
-    display: grids;
-    grid: 150px / auto auto auto auto;
-    margin: 0 auto;
     padding-top: 20px;
-    grid-area: controls;
-    min-width: 400px;
+    min-width: 315px;
+    max-width: 315px;
 }
 
 .InputLabels {

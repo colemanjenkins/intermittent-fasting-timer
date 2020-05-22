@@ -3,7 +3,7 @@
 
 .timer {
   grid-area: timer;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .timerCircle {
