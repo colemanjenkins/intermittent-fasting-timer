@@ -221,9 +221,9 @@ class App extends Component {
     return (
 
       <div className="App" onClick={() => this.setState({ recycle: false })}>
-        <div className="grid">
+        <div>
           <Header />
-          <div style={{ display: "flex", flexWrap: "wrap", marginTop: 50 }}>
+          <div className="top">
             <TimerControls
               updatePlannedTime={this.updatePlannedTime}
               newFailed={this.newFailed}

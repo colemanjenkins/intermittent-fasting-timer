@@ -1,9 +1,4 @@
 
-body {
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .top {
   display: flex;
   justify-content: space-evenly;
