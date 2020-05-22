@@ -14,11 +14,11 @@ body {
   grid-area: confetti;
 }
 
-.grid {
+/* .grid {
   display: grid;
   height: 610px;
   grid-template: 180px 250px 180px/ 1fr 1fr 1fr;
   grid-template-areas: "header header header"
                        "controls timer rightUpper"
                        "controls timer resources";
-}
+} */
