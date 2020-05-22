@@ -151,7 +151,7 @@ class App extends Component {
     let remaining = totalInSeconds % 3600;
 
     let minutes = Math.floor(remaining / 60);
-    let seconds = remaining % 60;
+    let seconds = Math.floor(remaining % 60);
 
     return [hours, minutes, seconds];
   }
