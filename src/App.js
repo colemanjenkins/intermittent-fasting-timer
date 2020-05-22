@@ -60,22 +60,11 @@ class App extends Component {
     this.parseTime = this.parseTime.bind(this);
     this.editNote = this.editNote.bind(this);
     this.removeFast = this.removeFast.bind(this);
-    // this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
-    // this.updateWindowDimensions();
-    // window.addEventListener('resize', this.updateWindowDimensions);
     this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 20);
   }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.updateWindowDimensions);
-  // }
-
-  // updateWindowDimensions() {
-  //   this.setState({ width: window.innerWidth, height: window.innerHeight });
-  // }
 
   componentDidUpdate() {
     if (!this.state.stop &&
