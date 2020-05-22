@@ -51,8 +51,6 @@ class App extends Component {
       stop: true,
       altStop: true,
       confetti: false,
-      recycle: true,
-      stopTime: 0,
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
     this.newSuccess = this.newSuccess.bind(this);
@@ -60,22 +58,11 @@ class App extends Component {
     this.parseTime = this.parseTime.bind(this);
     this.editNote = this.editNote.bind(this);
     this.removeFast = this.removeFast.bind(this);
-    // this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
-    // this.updateWindowDimensions();
-    // window.addEventListener('resize', this.updateWindowDimensions);
     this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 20);
   }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.updateWindowDimensions);
-  // }
-
-  // updateWindowDimensions() {
-  //   this.setState({ width: window.innerWidth, height: window.innerHeight });
-  // }
 
   componentDidUpdate() {
     if (!this.state.stop &&
@@ -83,15 +70,6 @@ class App extends Component {
         && (this.state.timerTime + this.state.timerStart >= this.state.currentTime - 10))) {
       this.newSuccess();
     }
-    if (!this.state.altStop && (this.state.currentTime - this.state.stopTime >= 3000) && this.state.recycle) {
-      this.stopRecycle();
-    }
-  }
-
-  startConfetti = () => {
-    this.setState({
-      confetti: true
-    })
   }
 
   componentWillUnmount() {
@@ -137,8 +115,6 @@ class App extends Component {
       stop: true,
       altStop: false,
       confetti: true,
-      recycle: true,
-      stopTime: Date.now(),
     }));
   }
 
@@ -196,12 +172,6 @@ class App extends Component {
     const list = this.state.fasts.filter(fast => fast.id !== key)
     this.setState({
       fasts: list
-    })
-  }
-
-  stopRecycle = () => {
-    this.setState({
-      recycle: false
     })
   }
 

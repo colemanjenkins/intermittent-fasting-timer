@@ -2,30 +2,28 @@ import React, { Component } from 'react';
 import './Message.css';
 import "antd/dist/antd.css";
 
+const messages = [
+    'You got this!',
+    'WILLPOWER!!',
+    'What is hunger anyways?',
+    'Keep it up!',
+    'gl hf',
+    'YOU CAN DO THIS',
+    "You're not hungry",
+    "Stop thinking about your mom's mac n cheese",
+    "Don't do it",
+    'I am watching you',
+    'Just think how disappointed I will be',
+]
+
 class Message extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            messages: [
-                'You got this!',
-                'WILLPOWER!!',
-                'What is hunger anyways?',
-                'Keep it up!',
-                'gl hf',
-                'YOU CAN DO THIS',
-                "You're not hungry",
-                "Stop thinking about your mom's mac n cheese",
-                "Don't do it",
-                'I am watching you',
-                'Just think how disappointed I will be',
-            ],
-            oldMessageID: 0,
             messageID: 0,
             percentGoal: 90,
         }
-
-        this.handleMsg = this.handleMsg.bind(this);
     }
 
     calculatePercent = (timerStart, timerLength, stop) => {
@@ -38,14 +36,14 @@ class Message extends Component {
         return pct;
     }
 
-    handleMsg = (percent, num, stop, timerLength) => {
+    handleMsg = (percent, num, timerLength) => {
         let newNum = num;
         let goal = this.state.percentGoal;
         let changeMessage = true;
         if (percent < goal && changeMessage && percent !== 0 && percent !== 100 && timerLength >= 10000) {
-            newNum = Math.floor(Math.random() * this.state.messages.length);
+            newNum = Math.floor(Math.random() * messages.length);
             while (newNum === num) {
-                newNum = Math.floor(Math.random() * this.state.messages.length);
+                newNum = Math.floor(Math.random() * messages.length);
             }
             this.setState({
                 percentGoal: goal - 10,
@@ -75,11 +73,11 @@ class Message extends Component {
         } = this.props;
         let percent = this.calculatePercent(timerStart, timerLength, stop);
 
-        this.handleMsg(percent, this.state.messageID, stop, timerLength);
+        this.handleMsg(percent, this.state.messageID, timerLength);
 
         return (
             <div className="timer">
-                <div style={{ display: "flex", justifyContent: "center" }}>{this.state.messages[this.state.messageID]}</div>
+                <div style={{ display: "flex", justifyContent: "center" }}>{messages[this.state.messageID]}</div>
             </div>
         );
     }
