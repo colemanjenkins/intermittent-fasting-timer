@@ -105,7 +105,7 @@ class Timer extends Component {
                     <Confetti
                         active={confetti}
                         config={config}
-                        style={{ justifyContent: "center" }}
+                        className="confetti"
                     />
                     <Progress type="circle"
                         percent={this.calculatePercent(timerStart, timerLength, stop, now)}
