@@ -1,17 +1,15 @@
 .records {
   grid-area: rightUpper;
-  width: 300px;
+  width: 350px;
   font-size: 17px;
-  /* margin: 22px 50px 30px 50px; */
   padding: 22px 50px 30px 50px;
 }
 
 .noRecords {
    grid-area: rightUpper;
-   width: 300px;
+   width: 350px;
    font-size: 17px;
-   /* margin: 22px 50px 30px 50px; */
-  padding: 22px 50px 30px 50px;
+   padding: 22px 50px 30px 50px;
 }
 
 

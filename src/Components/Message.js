@@ -79,7 +79,9 @@ class Message extends Component {
 
         return (
             <div className="timer">
-                <div style={{ display: "flex", justifyContent: "center" }}>{this.state.messages[this.state.messageID]}</div>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    {this.state.messages[this.state.messageID]}
+                </div>
             </div>
         );
     }

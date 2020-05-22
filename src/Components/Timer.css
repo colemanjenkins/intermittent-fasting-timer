@@ -1,11 +1,6 @@
 
 @import '/node_modules/antd/dist/antd.css';
 
-.timer {
-  grid-area: timer;
-  /* margin: auto; */
-}
-
 .timerCircle {
   font-size: 25px;
   vertical-align: center;
@@ -20,5 +15,6 @@
 .Message {
   font-size: 20px;
   max-width: 300px;
+  height: 60px;
 }
 

@@ -100,7 +100,7 @@ class Timer extends Component {
         } = this.props;
 
         return (
-            <div className="timer">
+            <div>
                 <div className="timerCircle">
                     <Confetti
                         active={confetti}
