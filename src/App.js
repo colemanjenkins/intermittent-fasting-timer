@@ -51,8 +51,6 @@ class App extends Component {
       stop: true,
       altStop: true,
       confetti: false,
-      recycle: true,
-      stopTime: 0,
     }
     this.updatePlannedTime = this.updatePlannedTime.bind(this);
     this.newSuccess = this.newSuccess.bind(this);
@@ -72,15 +70,6 @@ class App extends Component {
         && (this.state.timerTime + this.state.timerStart >= this.state.currentTime - 10))) {
       this.newSuccess();
     }
-    if (!this.state.altStop && (this.state.currentTime - this.state.stopTime >= 3000) && this.state.recycle) {
-      this.stopRecycle();
-    }
-  }
-
-  startConfetti = () => {
-    this.setState({
-      confetti: true
-    })
   }
 
   componentWillUnmount() {
@@ -126,8 +115,6 @@ class App extends Component {
       stop: true,
       altStop: false,
       confetti: true,
-      recycle: true,
-      stopTime: Date.now(),
     }));
   }
 
@@ -185,12 +172,6 @@ class App extends Component {
     const list = this.state.fasts.filter(fast => fast.id !== key)
     this.setState({
       fasts: list
-    })
-  }
-
-  stopRecycle = () => {
-    this.setState({
-      recycle: false
     })
   }
 

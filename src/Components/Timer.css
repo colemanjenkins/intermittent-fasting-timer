@@ -1,11 +1,3 @@
-
-@import '/node_modules/antd/dist/antd.css';
-
-.timer {
-  grid-area: timer;
-  /* margin: auto; */
-}
-
 .timerCircle {
   font-size: 25px;
   vertical-align: center;
