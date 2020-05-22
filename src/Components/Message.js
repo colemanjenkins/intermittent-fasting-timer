@@ -23,7 +23,6 @@ class Message extends Component {
             oldMessageID: 0,
             messageID: 0,
             percentGoal: 90,
-
         }
 
         this.handleMsg = this.handleMsg.bind(this);

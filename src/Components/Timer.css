@@ -1,7 +1,6 @@
 
 @import '/node_modules/antd/dist/antd.css';
 
-
 .timer {
   grid-area: timer;
   margin: auto;
@@ -12,14 +11,14 @@
   vertical-align: center;
 }
 
-.AltTimer {
+.altTimer {
   text-align: center;
   height: 40px;
-  margin-top: 10px;
+  padding-top: 10px;
 }
 
 .Message {
-  font-size: 25px;
+  font-size: 20px;
   max-width: 300px;
 }
 

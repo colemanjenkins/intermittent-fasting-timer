@@ -111,12 +111,12 @@ class TimerControls extends React.Component {
                 <div className="buttons">
                     <h2 style={{ marginLeft: 40 }}>Set Timer</h2>
                     <div className="StartButton">
-                        <Button type="submit"
+                        <Button
                             onClick={() => this.props.updatePlannedTime(this.calculateTotalTime(this.state))}
                             type="primary">Start Timer</Button>
                     </div>
                     <div className="GiveUp">
-                        <Button type="submit"
+                        <Button
                             onClick={() => { this.props.newFailed(); this.props.updatePlannedTime(0) }}
                             type="primary" danger>I failed :(</Button>
                     </div>

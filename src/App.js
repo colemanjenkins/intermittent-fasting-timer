@@ -5,10 +5,9 @@ import Timer from './Components/Timer.js';
 import History from './Components/History.js';
 import Records from './Components/Records.js';
 import TimerControls from './Components/TimerControls.js';
-import Footer from './Components/Footer.js';
 import Header from './Components/Header.js'
 import './Components/TimerControls.css';
-import Confetti from 'react-confetti'
+import Confetti from 'react-confetti';
 
 const failedFastsMessages = [
   'Some room for improvement!',
@@ -170,11 +169,11 @@ class App extends Component {
 
   editNote(newText, key) {
     const list = this.state.fasts
-    list.map(fast => {
-      if (fast.id === key) {
-        fast.note = newText
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id === key) {
+        list[i].note = newText
       }
-    });
+    }
     this.setState({
       fasts: list
     })
@@ -213,6 +212,7 @@ class App extends Component {
             <Confetti
               recycle={this.state.recycle}
               className="confetti"
+              width={this.props.windowWidth}
             />
           }
 
@@ -237,7 +237,6 @@ class App extends Component {
           editNote={this.editNote}
           removeFast={this.removeFast}
         />
-        <Footer />
 
       </div>
     );

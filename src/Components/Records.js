@@ -12,32 +12,32 @@ class Records extends Component {
 
     findLongestFast(fasts) {
         var time = 0;
-        fasts.map(fast => {
-            if (fast.actualTime > time) {
-                time = fast.actualTime
+        for (let i = 0; i < fasts.length; i++) {
+            if (fasts[i].actualTime > time) {
+                time = fasts[i].actualTime
             }
-        })
+        }
         return time;
     }
     findShortestFast(fasts) {
         var time = fasts[0].actualTime;
-        fasts.map(fast => {
-            if (fast.actualTime < time) {
-                time = fast.actualTime
+        for (let i = 0; i < fasts.length; i++) {
+            if (fasts[i].actualTime < time) {
+                time = fasts[i].actualTime
             }
-        })
+        }
         return time;
     }
     passRate(fasts) {
         var pass = 0;
         var fail = 0;
-        fasts.map(fast => {
-            if (fast.passed) {
+        for (let i = 0; i < fasts.length; i++) {
+            if (fasts[i].passed) {
                 pass++;
             } else {
                 fail++;
             }
-        })
+        }
         return pass / (pass + fail);
     }
 

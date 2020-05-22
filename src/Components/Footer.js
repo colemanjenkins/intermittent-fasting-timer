@@ -15,7 +15,7 @@ class Footer extends Component {
                                     Thank you for using Intermittent Fasting Timer!
                             </p>
                             </MDBCol>
-                            <MDBCol md="6">
+                            <MDBCol md="6" className="py-3">
                                 <h5 className="title">Additional Resources</h5>
                                 <a target="_blank" rel="noopener noreferrer" href="https://www.healthline.com/nutrition/intermittent-fasting-guide">
                                     Intermittent Fasting 101 — The Ultimate Beginner's Guide
@@ -36,7 +36,6 @@ class Footer extends Component {
                                 <a target="_blank" rel="noopener noreferrer" href="https://www.medicalnewstoday.com/articles/327398">
                                     Intermittent Fasting Tips
                                 </a>
-                                <br></br>
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>
