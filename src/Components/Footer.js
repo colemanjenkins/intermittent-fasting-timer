@@ -36,6 +36,10 @@ class Footer extends Component {
                                 <a target="_blank" rel="noopener noreferrer" href="https://www.medicalnewstoday.com/articles/327398">
                                     Intermittent Fasting Tips
                                 </a>
+                                <div>{" "}</div>
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=oHg5SJYRHA0">
+                                    This one tip for intermittent fasting changed my health
+                                </a>
                             </MDBCol>
                         </MDBRow>
                     </MDBContainer>
