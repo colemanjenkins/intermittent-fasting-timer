@@ -25,13 +25,16 @@ WARNING:
 You have 13 H1 headings. You may want to use the "H1 -> H2" option to demote all headings by one level.
 
 ----->
+# Intermittent Fasting Timer
+
 
 ![desktop_image](images/desktop.gif "image_tooltip")
+
 ![mobile_image](images/mobile.gif "image_tooltip")
 
 
 
-# Intermittent Fasting Timer
+
 
 ## Check out the live app here!
 https://intermittent-fasting-tracker.netlify.app/
