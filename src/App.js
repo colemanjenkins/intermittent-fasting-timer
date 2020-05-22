@@ -224,6 +224,15 @@ class App extends Component {
         <div className="grid">
           <Header />
 
+
+          {this.state.confetti &&
+            <Confetti
+              recycle={this.state.recycle}
+              className="confetti"
+              width={this.props.windowWidth}
+              style={{ flex: 1 }}
+            />
+          }
           <div style={{ display: "flex", flexWrap: "wrap", marginTop: 50 }}>
             <TimerControls
               updatePlannedTime={this.updatePlannedTime}

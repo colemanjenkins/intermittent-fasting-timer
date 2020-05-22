@@ -4,9 +4,11 @@ body {
   background-repeat: no-repeat;
 }
 
-.dummyHeader {
-  text-align: center;
-  font-size: 40px;
+.top {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 50px;
 }
 
 .confetti {
