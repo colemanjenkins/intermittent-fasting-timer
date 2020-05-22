@@ -7,7 +7,6 @@ import Records from './Components/Records.js';
 import TimerControls from './Components/TimerControls.js';
 import Header from './Components/Header.js'
 import './Components/TimerControls.css';
-import Confetti from 'react-confetti';
 
 const failedFastsMessages = [
   'Some room for improvement!',
@@ -43,7 +42,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      width: 0,
+      height: 0,
       fasts: [],
       timerTime: 18 * 60 * 60 * 1000,
       timerStart: 0,
@@ -60,11 +60,22 @@ class App extends Component {
     this.parseTime = this.parseTime.bind(this);
     this.editNote = this.editNote.bind(this);
     this.removeFast = this.removeFast.bind(this);
+    // this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
+    // this.updateWindowDimensions();
+    // window.addEventListener('resize', this.updateWindowDimensions);
     this.interval = setInterval(() => this.setState({ currentTime: Date.now() }), 20);
   }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener('resize', this.updateWindowDimensions);
+  // }
+
+  // updateWindowDimensions() {
+  //   this.setState({ width: window.innerWidth, height: window.innerHeight });
+  // }
 
   componentDidUpdate() {
     if (!this.state.stop &&
@@ -94,6 +105,7 @@ class App extends Component {
       })
     } else {
       this.setState({
+        confetti: false,
         timerTime: msTime,
         timerStart: Date.now(),
         stop: false,
@@ -115,6 +127,7 @@ class App extends Component {
       id: newID,
       status: successFastsMessages[Math.floor(Math.random() * successFastsMessages.length)],
       note: '',
+      confetti: true,
     }
     const newFastList = [...this.state.fasts, successFast]
     console.log(this.state.timerTime)
@@ -203,37 +216,32 @@ class App extends Component {
   }
 
   render() {
+
+
     return (
 
       <div className="App" onClick={() => this.setState({ recycle: false })}>
         <div className="grid">
           <Header />
-          {this.state.confetti &&
-            <Confetti
-              recycle={this.state.recycle}
-              className="confetti"
-              width={this.props.windowWidth}
-              style={{flex:1}}
-            />
-          }
-          <div style={{display: "flex", flexWrap: "wrap", marginTop: 50}}>
-          <TimerControls
-            updatePlannedTime={this.updatePlannedTime}
-            newFailed={this.newFailed} 
-            style={{flex:1}}/>
-          <Timer stop={this.state.stop}
-            altStop={this.state.altStop}
-            timerLength={this.state.timerTime}
-            timerStart={this.state.timerStart}
-            now={this.state.currentTime}
-            confetti={this.state.confetti} 
-            style={{flex:1}}/>
+
+          <div style={{ display: "flex", flexWrap: "wrap", marginTop: 50 }}>
+            <TimerControls
+              updatePlannedTime={this.updatePlannedTime}
+              newFailed={this.newFailed}
+              style={{ flex: 1 }} />
+            <Timer stop={this.state.stop}
+              altStop={this.state.altStop}
+              timerLength={this.state.timerTime}
+              timerStart={this.state.timerStart}
+              now={this.state.currentTime}
+              confetti={this.state.confetti}
+              style={{ flex: 1 }} />
 
 
-          <Records
-            fasts={this.state.fasts}
-            parseTime={this.parseTime} 
-            style={{flex:1}}/>
+            <Records
+              fasts={this.state.fasts}
+              parseTime={this.parseTime}
+              style={{ flex: 1 }} />
           </div>
 
         </div>

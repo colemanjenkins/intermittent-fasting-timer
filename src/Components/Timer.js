@@ -3,6 +3,20 @@ import './Timer.css';
 import { Progress } from 'antd';
 import "antd/dist/antd.css";
 import Message from './Message.js';
+import Confetti from 'react-dom-confetti';
+
+const config = {
+    angle: "0",
+    spread: "360",
+    startVelocity: "50",
+    elementCount: "200",
+    dragFriction: "0.11",
+    duration: "4000",
+    stagger: "2",
+    width: "21px",
+    height: "14px",
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6"]
+};
 
 class Timer extends Component {
 
@@ -81,17 +95,23 @@ class Timer extends Component {
             altStop,
             timerLength,
             timerStart,
-            now
+            now,
+            confetti
         } = this.props;
 
         return (
             <div className="timer">
                 <div className="timerCircle">
+                    <Confetti
+                        active={confetti}
+                        config={config}
+                        style={{ justifyContent: "center" }}
+                    />
                     <Progress type="circle"
                         percent={this.calculatePercent(timerStart, timerLength, stop, now)}
                         format={() => this.timeDisplay(timerStart, timerLength, stop, now)}
                         width={300}
-                    />
+                    ></Progress>
                     <div className="altTimer">
                         {this.displaySecondTimer(altStop, timerStart, now)}
                     </div>
