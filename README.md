@@ -41,27 +41,8 @@ https://intermittent-fasting-tracker.netlify.app/
 
 ## Project Proposal
 
-Convenient timer to track fasting progress
-
-
-                        May 18th, 2020
-
-
-                        Prepared by
-
-
-                        Coleman Jenkins, Annie Cao, Alan Li
-
-
-                        Prepared for
-
-
-                        Annie Sharkey, Camille Cooper
-
 
 ## Team Introduction
-
-
 
 
 **Coleman Jenkins **As someone who has always loved music and engaged problem solving, Coleman loves to spend time at the intersection of music and technology. He enjoys using music software and doing live sound production which inspires him and pushes him to improve. 
@@ -71,8 +52,6 @@ In order to pursue these desires further in the future, Coleman is planning to m
 **Alan Li **Having lived in over ten states and outside of the US, Alan has nothing holding him back from pursuing new opportunities in new and unknown subjects. Living among so many diverse backgrounds has inspired him to optimize society’s tools for succeeding through his passion for software engineering and economics. By meshing these two fields together he hopes to develop new ideas to improve the efficiency at which problems can be solved. Within the environment of the company, he hopes to create a relationship that promotes growth on both sides. Alan is an anticipated Computer Science Major at UVA and hopes to develop a deeper understanding of its relationship with non-technological fields to better serve the diverse needs of today’s society.
 
 **Annie Cao **Annie has been fascinated with human health and biology, particularly in a medical context, since she was a child. When she discovered an equivalent passion for statistical data and computer science in her first year at college, she delved into the intersection between these fields. Annie is majoring in Computer Science and taking courses in statistics and biology as well. Annie also has a knack for managerial and administrative duties. During her internship at the medical technology company ResMed last summer, Annie drafted technical documentation, investigated new software for the department, and co-piloted an early testers program for other project managers. Ultimately, she is looking forward to honing and applying her interdisciplinary skills and knowledge this summer during Launch. Outside of classes, she volunteers at the Emily Couric Clinical Cancer Center and enjoys drawing in her free time.
-
-Table of Contents
 
 
 ## Introduction
