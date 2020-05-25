@@ -39,6 +39,10 @@ You have 13 H1 headings. You may want to use the "H1 -> H2" option to demote all
 ## Check out the live app here!
 https://intermittent-fasting-tracker.netlify.app/
 
+## Project Presentation
+
+https://docs.google.com/presentation/d/10haG7otDNudpfjb3qYM5HbIGUA3qOvgXKfZCPuAENwo/edit?usp=sharing
+
 ## Project Proposal
 
 
